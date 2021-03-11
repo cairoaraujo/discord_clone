@@ -1,0 +1,54 @@
+create-user isaacfranco@imd.ufrn.br senhalegal Isaac Franco Fernandes
+create-user isaacfranco@imd.ufrn.br senhalegal Isaac Franco Fernandes
+create-user renan@imd.ufrn.br senha Renan
+create-user julio@imd.ufrn.br senha Julio
+login isaacfranco@imd.ufrn.br senhalegal
+disconnect
+disconnect
+login isaacfranco@imd.ufrn.br SENHA_ERRADA
+login isaacfranco@imd.ufrn.br senhalegal
+create-server servidor-legal
+set-server-desc servidor-legal Um servidor muito banaca e coisa e tal
+create-server servidor-ruim
+set-server-desc servidor-ruim Um servidor lixo total
+set-server-invite-code servidor-legal 123
+disconnect
+set-server-invite-code servidor-legal 456
+login renan@imd.ufrn.br senha Renan
+set-server-invite-code servidor-legal 789
+login isaacfranco@imd.ufrn.br senhalegal
+set-server-invite-code servidor-legal 321
+set-server-invite-code servidor-legal
+set-server-invite-code servidor-inexistente 123
+set-server-invite-code servidor-inexistente
+disconnect
+list-servers
+login isaacfranco@imd.ufrn.br senhalegal
+list-servers
+remove-server servidor-inexistente
+remove-server servidor-legal
+list-servers
+disconnect
+remove-server servidor-ruim
+login isaacfranco@imd.ufrn.br senhalegal
+remove-server servidor-ruim
+create-server servidor-bacana
+create-server servidor-fuderoso
+list-servers
+enter-server servidor-bacana
+leave-server servidor-bacana
+list-servers
+login isaacfranco@imd.ufrn.br senhalegal
+remove-server servidor-bacana
+enter-server servidor-bacana
+list-participants
+login renan@imd.ufrn.br senha
+create-server servidor-sinistro
+enter-server servidor-sinistro
+login julio@imd.ufrn.br senha
+enter-server servidor-sinistro
+login isaacfranco@imd.ufrn.br senhalegal
+enter-server servidor-sinistro
+list-participants
+quit
+create-user naodeveprocessar@imd.ufrn.br naodevechegaraqui Não deve chegar aqui
