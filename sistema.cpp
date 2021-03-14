@@ -1,18 +1,33 @@
 #include "sistema.h"
+#include "usuario.h"
 #include <iostream>
 #include <sstream>
 #include <algorithm>
 
 using namespace std;
 
+//VARIAVEIS:
+
+  //Contador para os IDs do usuario:
+    int usuarioID = 0;
+
+
 /* COMANDOS */
+
 string Sistema::quit() {
   return "Saindo...";
 }
 
 string Sistema::create_user (const string email, const string senha, const string nome) {
+  //cria um novo usuario a partir do construtor da classe usuario
+  Usuario *usuario1 = new Usuario (email, senha, nome);
+  cout << usuario1->getUsuario()<<endl;
+  cout << usuario1->getEmail()<<endl;
+  cout << usuario1->getNome()<<endl;
+
   return "create_user NÃO IMPLEMENTADO";
 }
+
 
 string Sistema::login(const string email, const string senha) {
 

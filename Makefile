@@ -12,7 +12,7 @@ usuario.o: usuario.cpp usuario.h
 objects: sistema.o executor.o
 
 concordo: objects concordo.cpp
-	g++ -Wall -fsanitize=address sistema.o executor.o concordo.cpp -o concordo
+	g++ sistema.o executor.o concordo.cpp -o concordo
 
 clean:
 	rm *.o concordo
