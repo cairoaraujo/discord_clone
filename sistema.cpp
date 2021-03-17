@@ -3,14 +3,26 @@
 #include <iostream>
 #include <sstream>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
+
+//DECLARACOES:
+
+  //Vector que armazena todos os usuários criados no Concordo:
+
 
 //VARIAVEIS:
 
   //Contador para os IDs do usuario:
-    int usuarioID = 0;
+  int usuarioID = 0;
 
+  //Variavel booleana que retorna true se logado e false se não logado
+  bool estaLogado;
+  //Variavel que controla se usuario ja foi criado
+  bool foiCriado;
+  //Variavel que controla qual ID está logado
+  int idLogada;
 
 /* COMANDOS */
 
@@ -18,23 +30,65 @@ string Sistema::quit() {
   return "Saindo...";
 }
 
-string Sistema::create_user (const string email, const string senha, const string nome) {
-  //cria um novo usuario a partir do construtor da classe usuario
-  Usuario *usuario1 = new Usuario (email, senha, nome);
-  cout << usuario1->getUsuario()<<endl;
-  cout << usuario1->getEmail()<<endl;
-  cout << usuario1->getNome()<<endl;
+string Sistema::create_user (const string email, const string senha, const string nome) {//se não há usuarios criados, não precisa verificar se os dados já foram cadastrados. 
 
-  return "create_user NÃO IMPLEMENTADO";
+  if (vectorUsuarios.empty()== true ){//se não há usuarios criados, não precisa verificar se os dados já foram cadastrados. 
+  
+    Usuario  *novoUsuario = new Usuario (email, senha, nome);//cria um novo usuario a partir do construtor da classe usuario:
+    vectorUsuarios.push_back(novoUsuario);//adiciono no final do vetor o ultimo usuario criado.
+
+  } else{//se já existem usuarios cadastrados, irá percorrer o vector pra ver se já foi usado o email em outra conta.
+
+    for (int u=0; u< vectorUsuarios.size();u++){
+      if (vectorUsuarios[u]->getEmail() == email){
+        cout<<"EMAIL JÁ CADASTRADO!"<<endl;
+        foiCriado = true;
+        break;
+      }
+      else{
+        Usuario  *novoUsuario = new Usuario (email, senha, nome);
+        vectorUsuarios.push_back(novoUsuario);
+      }
+      //imprimindo os usuarios (testando)
+      cout <<"QUANTIDADE DE USUARIOS ATIVOS: "<<vectorUsuarios.size()<<endl;
+      cout <<"IMPRIMINDO OS USUARIOS ATIVOS:"<<endl;
+      cout << vectorUsuarios[u]->getEmail()<<endl;
+      //cout << vectorUsuarios[u]->getSenha()<<endl;
+      //cout << vectorUsuarios[u]->getUsuario()<<endl;   
+    }
+  }
+  if (foiCriado==true)
+  return "Usuário ja cadastrado!";
+  else{
+    return "Usuario cadastrado com sucesso";
+  }
 }
 
 
 string Sistema::login(const string email, const string senha) {
+  for (int u=0; u< vectorUsuarios.size();u++){
 
-  return "login NÃO IMPLEMENTADO";
+    if (vectorUsuarios[u]->getEmail() == email){
+
+      if (vectorUsuarios[u]->getSenha()== senha){
+        cout<<"Usuario logado com sucesso!"<<endl;
+      }
+      else{
+        cout<<"senha invalida!"<<endl;
+      }
+
+    } 
+    else{
+      cout << "dados invalidos!"<<endl;
+    }
+  }
+  return "";
 }
 
 string Sistema::disconnect() {
+  if (estaLogado){
+    
+  }
   return "disconnect NÃO IMPLEMENTADO";
 }
 

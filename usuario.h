@@ -9,13 +9,13 @@ using namespace std;
 class Usuario{
     private:
 
-        int idUsuario;
+        int idUsuario = 0;
         string nomeUsuario;
         string emailUsuario;
         string senhaUsuario;
 
     public:
-
+        //vector<Usuario> vectorUsuarios;
         //CONSTRUTOR
         Usuario(string emailUsuario, string senhaUsuario, string nomeUsuario){
             this->nomeUsuario = nomeUsuario;
@@ -32,6 +32,15 @@ class Usuario{
         string getSenha(){
           return senhaUsuario;
         }
+
+        int getId(){
+          return idUsuario;
+        }
+
+        //void setId(idUsuario){
+          //this->idUsuario = idUsuario++;
+        //}
+
 
         
 };

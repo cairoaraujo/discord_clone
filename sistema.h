@@ -3,12 +3,14 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include "usuario.h"
 
 using namespace std;
 
 // Sistema deve concentrar todas as operações do Concordo
 class Sistema {
   private:
+    vector<Usuario*> vectorUsuarios;
     //precisa guardar uma coleção de servidores;
     //precisa guardar uma coleção de usuários;
     int usuarioLogadoId; // se 0: não logado, caso contrário guarda o id do usuário logado
