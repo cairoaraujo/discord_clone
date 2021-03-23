@@ -12,9 +12,10 @@ class Servidor{
     string nomeServidor;
     string descricaoServidor;
     string codigoConviteServidor;
-    //vector<Canal> canais; /*tem que ser vector<Canal*> canais;*/
+    //vector<Canal> canais;
     vector<int> participantesIDs;
   public:
+    int idServidor;
   //CONSTRUTOR SEM PARAMETROS:
     Servidor(string nomeServidor){
       this->nomeServidor = nomeServidor;
@@ -35,6 +36,13 @@ class Servidor{
     }
     void setDescricaoServidor(string descricaoServidor){
       this->descricaoServidor = descricaoServidor;
+    }
+
+    string getCodigoConviteServidor(){
+      return codigoConviteServidor;
+    }
+    void setCodigoConviteServidor(string codigoServidor){
+      codigoConviteServidor = codigoServidor;
     }
 };
 
