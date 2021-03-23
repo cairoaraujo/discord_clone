@@ -12,7 +12,7 @@ class Servidor{
     string nomeServidor;
     string descricaoServidor;
     string codigoConviteServidor;
-    //vector<Canal> canais;
+    //vector<Canal> canais; /*tem que ser vector<Canal*> canais;*/
     vector<int> participantesIDs;
   public:
   //CONSTRUTOR SEM PARAMETROS:
