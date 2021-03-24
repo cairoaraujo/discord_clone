@@ -4,6 +4,7 @@
 #include <string>
 #include "sistema.h"
 #include "executor.h"
+#include "usuario.h"
 
 using namespace std;
 

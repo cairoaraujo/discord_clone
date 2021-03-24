@@ -16,7 +16,7 @@ class Sistema {
 
     //vector que armazena servidores
     vector<Servidor*> vectorServidores;
-
+    string nomeUsuarioLogado;
     int usuarioLogadoId; // se 0: não logado, caso contrário guarda o id do usuário logado
     string nomeServidorConectado;
     string nomeCanalConectado;

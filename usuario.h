@@ -23,6 +23,10 @@ class Usuario{
             this->emailUsuario = emailUsuario;
             this->senhaUsuario = senhaUsuario;
         }
+        //DESTRUTOR
+        ~Usuario(){
+          
+        }
 
         string getUsuario(){
           return nomeUsuario;

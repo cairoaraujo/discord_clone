@@ -18,7 +18,6 @@ using namespace std;
   //Contador para os IDs do usuario:
   int usuarioID = 0;
   int servidorID = 0;
-
   //Variavel booleana que retorna true se logado e false se não logado
   bool estaLogado;
   //Variavel que controla se usuario ja foi criado
@@ -51,7 +50,7 @@ string Sistema::create_user (const string email, const string senha, const strin
         //cout<<"CADASTRO REALIZADO COM SUCESSO!"<<endl;
         emailJaUsado = false;
             for (int u=0; u<vectorUsuarios.size();u++){
-      cout << vectorUsuarios[u]->getEmail()<<endl;
+      cout << vectorUsuarios[u]->getEmail()<<" - ID: ";
       cout << vectorUsuarios[u]->idUsuario<<endl;
     }
         return "Cadastro realizado com sucesso!";
@@ -88,9 +87,10 @@ string Sistema::login(const string email, const string senha) {
       if (vectorUsuarios[u]->getEmail() == email){
 
         if (vectorUsuarios[u]->getSenha()== senha){
-          cout<<"Usuario logado com sucesso!"<<endl;
+          cout<<"Usuario '"<<vectorUsuarios[u]->getEmail()<<"' logado com sucesso!"<<endl;
           estaLogado = true;
           usuarioLogadoId = vectorUsuarios[u]->idUsuario;
+          nomeUsuarioLogado = vectorUsuarios[u]->getUsuario();
           break;
         }
         else{
@@ -122,12 +122,23 @@ string Sistema::disconnect() {
 string Sistema::create_server(const string nome) {
   if (estaLogado == true){ //só poderá criar servidor se houver usuário logado
     servidorID++;
+    //há a criação do objeto novoServidor de forma dinâmica
     Servidor  *novoServidor = new Servidor(nome);
+    //o atributo idServidor do objeto novoServidor recebe o valor da variável servidorID
     novoServidor->idServidor = servidorID;
+    //adiciono o objeto no final do vectorServidores
     vectorServidores.push_back(novoServidor);
+    //armazeno o ID do usuário dono do server a partir da ID do usuario logado
     novoServidor->setUsuarioDonoID(usuarioLogadoId);
     cout<<"ID do usuario que criou o servidor '"<<novoServidor->getNomeServidor()<<"': "<<novoServidor->getUsuarioDonoID()<<endl;
     cout<<"ID do servidor:"<<novoServidor->idServidor<<endl;
+
+    //armazeno o nome do usuario que entrou no servidor
+    vectorServidores[novoServidor->idServidor - 1]->vectorNomeParticipantesServidor.push_back(nomeUsuarioLogado);
+
+    //armazeno o id do usuario que entrou no servidor
+    //vectorServidores[novoServidor->idServidor]->vectorParticipantesIDs.push_back(usuarioLogadoId);
+
     return "Servidor criado com sucesso!";
   }
   else{
@@ -140,7 +151,7 @@ string Sistema::set_server_desc(const string nome, const string descricao) {
   int aux;
   for (int u=0; u < vectorServidores.size();u++){
 
-    cout<<"DEBUG: ENTROU "<< u << " VEZES"<<endl;
+    //cout<<"DEBUG: ENTROU "<< u << " VEZES"<<endl;
 
     if(vectorServidores[u]->getNomeServidor() == nome){
 
@@ -150,11 +161,11 @@ string Sistema::set_server_desc(const string nome, const string descricao) {
 
   cout<<"IMPRIMINDO DESCRICOES DOS SERVIDORES: "<<endl;
   for(int u = 0; u < vectorServidores.size(); u++){
-    cout<<"DEBUG: entrou no laço "<<u<<" vezes"<<endl;
+    //cout<<"DEBUG: entrou no laço "<<u<<" vezes"<<endl;
     cout<<vectorServidores[u]->getNomeServidor()<<endl;
     cout<<vectorServidores[u]->getDescricaoServidor()<<endl;
   }
-  return "set_server_desc NÃO IMPLEMENTADO";
+  return " ";
 }
 
 string Sistema::set_server_invite_code(const string nome, const string codigo) {
@@ -177,8 +188,8 @@ string Sistema::set_server_invite_code(const string nome, const string codigo) {
   }
   if(encontrouServidor == true){
     vectorServidores[aux]->setCodigoConviteServidor(codigo);
-    cout << vectorServidores[aux]->getCodigoConviteServidor();
-    return "CODIGO CRIADO!";
+    cout <<"Foi criado um codigo para o servidor: "<< vectorServidores[aux]->getCodigoConviteServidor();
+    return "Codigo-convite criado com sucesso!";
   }
   else{
     return "erro!";
@@ -188,8 +199,7 @@ string Sistema::set_server_invite_code(const string nome, const string codigo) {
 string Sistema::list_servers() {
   cout<<"Imprimindo lista de servidores..."<<endl;
   for(int u = 0; u < vectorServidores.size(); u++){
-    cout<<vectorServidores[u]->getNomeServidor()<<endl;
-    cout<<"'"<<vectorServidores[u]->getDescricaoServidor()<<"'"<<endl;
+    cout<<vectorServidores[u]->getNomeServidor()<<" - descricao: "<<vectorServidores[u]->getDescricaoServidor()<<endl;
   }
 
   return "";
@@ -204,12 +214,36 @@ string Sistema::remove_server(const string nome) {
     }//adicionar ID para cada server
   }
   cout<<nome<<" removido com sucesso."<<endl;
-  return "";
+  return "REMOVE-SERVER NAO IMPLEMENTADO 100% (HA BUGS!)";
 }
 
 string Sistema::enter_server(const string nome, const string codigo) {
+  //O laço percorrerá o vector e irá verificar se o nome do servidor existe. Se existir, verificará se o código informado pelo usuário é o código-convite do servidor. Se sim, o usuário logado será adicionado ao vectorParticipantesIDs.
+  for (int u = 0; u < vectorServidores.size();u++){
 
-  return "enter_server NÃO IMPLEMENTADO";
+    if(vectorServidores[u]->getNomeServidor() == nome){
+
+      if (codigo == vectorServidores[u]->getCodigoConviteServidor()){
+        //armazeno o nome do usuario que entrou no servidor
+        vectorServidores[u]->vectorNomeParticipantesServidor.push_back(nomeUsuarioLogado);
+
+        //armazeno o id do usuario que entrou no servidor
+        vectorServidores[u]->vectorParticipantesIDs.push_back(usuarioLogadoId);
+
+        //armazena o nome do servidor que o usuário está conectado atualmente
+        nomeServidorConectado = vectorServidores[u]->getNomeServidor();
+
+        return "Usuario entrou no servidor";
+      }
+      else{
+        cout <<"Codigo errado. Tente novamente."<<endl;
+      }
+    }
+    /*else{
+      cout <<"Nenhum servidor encontrado."<<endl;
+    }*/
+  }
+  return " ";
 }
 
 string Sistema::leave_server() {
@@ -217,7 +251,19 @@ string Sistema::leave_server() {
 }
 
 string Sistema::list_participants() {
-  return "list_participants NÃO IMPLEMENTADO";
+  int aux;
+  for(int u = 0; u < vectorServidores.size(); u++){
+    if (nomeServidorConectado == vectorServidores[u]->getNomeServidor()){
+      aux = u;
+    }
+    /*else{
+      return "erro ao imprimir participantes do servidor.";
+    }*/
+  }
+  for (int i = 0; i < vectorServidores[aux]->vectorParticipantesIDs.size(); i++){
+    cout << vectorServidores[aux]->vectorNomeParticipantesServidor[i]<<endl;
+  }
+  return " ";
 }
 
 string Sistema::list_channels() {
