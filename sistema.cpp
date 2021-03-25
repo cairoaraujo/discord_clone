@@ -206,15 +206,26 @@ string Sistema::list_servers() {
 }
 
 string Sistema::remove_server(const string nome) {
-
+  bool removeuServidor = false;
+  //percorrerá o vectorServidores e irá verificar se o nome do servidor informado pelo usuário existe. Se sim, irá remover e em seguida ajustar o index dos servidores à direita do removido.
   for (int u=0; u < vectorServidores.size();u++){
 
     if(nome == vectorServidores[u]->getNomeServidor()){
       vectorServidores.erase (vectorServidores.begin()+ vectorServidores[u]->idServidor - 1);
+      removeuServidor = true;
+      //cout<<nome<<" removido com sucesso."<<endl;
+      //return "removido";
+
     }//adicionar ID para cada server
   }
-  cout<<nome<<" removido com sucesso."<<endl;
-  return "REMOVE-SERVER NAO IMPLEMENTADO 100% (HA BUGS!)";
+  if(removeuServidor){
+    cout<<nome;
+    return " removido com sucesso!";
+  }
+  else{
+    return "Não foi possivel remover o servidor informado.";
+  }
+
 }
 
 string Sistema::enter_server(const string nome, const string codigo) {
