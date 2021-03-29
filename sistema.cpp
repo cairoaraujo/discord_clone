@@ -21,7 +21,7 @@ string Sistema::create_user (const string email, const string senha, const strin
     if(!vectorUsuarios.empty()){ //se  já existem usuários criados...
       for (int u=0; u < vectorUsuarios.size(); u++){
         if (email == vectorUsuarios[u]->getEmail()){
-          cout<<"O email ja foi cadastrado!"<<endl;
+          cout<<"O email "<<email<<" ja foi cadastrado!"<<endl;
           emailJaUsado = true;
           break;
         }  
@@ -51,8 +51,8 @@ string Sistema::create_user (const string email, const string senha, const strin
       novoUsuario->idUsuario = usuarioID;
       vectorUsuarios.push_back(novoUsuario);
     }
-
-    return "Usuario cadastrado com sucesso";
+    cout << "Usuario "<<nome<<" <"<<email<<"> ";
+    return "cadastrado com sucesso!";
 }
 
 
@@ -127,10 +127,13 @@ string Sistema::set_server_desc(const string nome, const string descricao) {
       encontrouServidor = true;
     }
   }
-  if(encontrouServidor)
-    return "Descricao alterada com sucesso!";
-  else
+  if(encontrouServidor){
+    cout<<"O servidor '"<<nome<<"' teve a "; 
+    return "descricao alterada com sucesso!";
+  }
+  else{
     return "Erro ao mudar descricao do servidor: servidor nao encontrado!";
+  }
 }
 
 string Sistema::set_server_invite_code(const string nome, const string codigo) {
@@ -155,7 +158,7 @@ string Sistema::set_server_invite_code(const string nome, const string codigo) {
   }
   if(encontrouServidor == true){
     vectorServidores[aux]->setCodigoConviteServidor(codigo);
-    cout <<"Foi criado um codigo para o servidor: "<< vectorServidores[aux]->getCodigoConviteServidor();
+    cout <<"Foi criado um codigo para o servidor '"<<nome<<"'. O codigo-convite eh: '"<< vectorServidores[aux]->getCodigoConviteServidor()<<"'."<<endl;
     return "Codigo-convite criado com sucesso!";
   }
   else{
@@ -271,7 +274,7 @@ string Sistema::list_participants() {
     }
   }
   else{
-    return "ERRO AO IMPRIMIR";
+    return "Erro ao imprimir participantes do Servidor.";
   }
   cout <<"Imprimindo participantes...\n";
   for (int i = 0; i < vectorServidores[aux]->vectorParticipantesIDs.size(); i++){

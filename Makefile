@@ -9,10 +9,13 @@ executor.o: executor.cpp executor.h sistema.o
 usuario.o: usuario.cpp usuario.h
 	g++ usuario.cpp -c
 
-objects: sistema.o executor.o
+servidor.o: servidor.cpp servidor.h
+	g++ servidor.cpp -c
+
+objects: sistema.o executor.o usuario.o servidor.o
 
 concordo: objects concordo.cpp
-	g++ sistema.o executor.o concordo.cpp -o concordo
+	g++ sistema.o executor.o usuario.o servidor.o concordo.cpp -o concordo
 
 clean:
 	rm *.o concordo

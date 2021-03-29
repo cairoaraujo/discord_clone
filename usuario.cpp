@@ -3,28 +3,30 @@
 #include <sstream>
 #include <algorithm>
 
-/*/CONSTRUTOR
-Usuario::Usuario(string nomeUsuario, string emailUsuario, string senhaUsuario){
-    this->nomeUsuario = nomeUsuario;
+using namespace std;
+
+//CONSTRUTOR
+Usuario::Usuario(string emailUsuario, string senhaUsuario, string nomeUsuario){
     this->emailUsuario = emailUsuario;
+    this->nomeUsuario = nomeUsuario;
     this->senhaUsuario = senhaUsuario;
 }
-//DESTRUTOR
-~Usuario(){
-    delete novoUsuario;    
-}
 
-string getUsuario(){
+//DESTRUTOR
+/*Usuario::~Usuario(){
+    delete //novoUsuario;    
+}*/
+
+string Usuario::getUsuario(){
     return nomeUsuario;
 }
-string getEmail(){
+string Usuario::getEmail(){
     return emailUsuario;
 }
-string getSenha(){
+string Usuario::getSenha(){
     return senhaUsuario;
 }
 
-int getId(){
+int Usuario::getId(){
     return idUsuario;
 }
-*/

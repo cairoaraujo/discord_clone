@@ -4,7 +4,6 @@
 #include <string>
 #include <iostream>
 
-using namespace std;
 /**
 * @brief Classe que contempla atributos e métodos dos Servidores do Concordo.
 */
@@ -17,25 +16,25 @@ class Servidor{
     /**
     * @brief Atributo que armazena o nome do Servidor.
     */
-    string nomeServidor;
+    std::string nomeServidor;
     /**
     * @brief Atributo que armazena o nome do Servidor.
     */
-    string descricaoServidor;
+    std::string descricaoServidor;
     /**
     * @brief Atributo que armazena o código convite do Servidor.
     */
-    string codigoConviteServidor;
+    std::string codigoConviteServidor;
 
   public:
     /**
     * @brief Estrutura de dados Vector que armazena os IDs dos participantes de determinado Servidor.
     */
-    vector<int> vectorParticipantesIDs;
+    std::vector<int> vectorParticipantesIDs;
     /**
     * @brief Estrutura de dados Vector que armazena os nomes dos participantes de determinado Servidor.
     */
-    vector<string> vectorNomeParticipantesServidor;
+    std::vector<std::string> vectorNomeParticipantesServidor;
     /**
     * @brief Atributo que guarda o ID do servidor.
     */
@@ -44,55 +43,39 @@ class Servidor{
     * @brief Método construtor do Servidor
     * @param nomeServidor O nome do Servidor a ser criado, sem espaços.
     */
-    Servidor(string nomeServidor){
-      this->nomeServidor = nomeServidor;
-    }
+    Servidor(std::string nomeServidor);
     /**
     * @brief Método get responsável pelo nome do servidor.
     * @return Nome do Servidor
     */
-    string getNomeServidor(){
-      return nomeServidor;
-    }
+    std::string getNomeServidor();
     /**
     * @brief Método set que armazena a ID logada como sendo o ID do usuário dono do Servidor.
     */
-    void setUsuarioDonoID(int idLogada){
-      this->usuarioDonoID = idLogada;
-    }
+    void setUsuarioDonoID(int idLogada);
     /**
     * @brief Método get responsável pelo ID do dono do Servidor.
     * @return ID do dono do servidor.
     */
-    int getUsuarioDonoID(){
-      return usuarioDonoID;
-    }
+    int getUsuarioDonoID();
     /**
     * @brief Método get responsável pela descrição do Servidor.
     * @return ID do dono do servidor.
     */
-    string getDescricaoServidor(){
-      return this->descricaoServidor;
-    }
+    std::string getDescricaoServidor();
     /**
     * @brief Método set que armazena a descrição do Servidor informado.
     */
-    void setDescricaoServidor(string descricaoServidor){
-      this->descricaoServidor = descricaoServidor;
-    }
+    void setDescricaoServidor(std::string descricaoServidor);
     /**
     * @brief Método get responsável pelo Código convite do Servidor.
     * @return Código convite do Servidor.
     */
-    string getCodigoConviteServidor(){
-      return codigoConviteServidor;
-    }
+    std::string getCodigoConviteServidor();
     /**
     * @brief Método set que armazena o código convite informado pelo usuário do Servidor.
     */
-    void setCodigoConviteServidor(string codigoServidor){
-      codigoConviteServidor = codigoServidor;
-    }
+    void setCodigoConviteServidor(std::string codigoServidor);
 };
 
 #endif

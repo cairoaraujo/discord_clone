@@ -4,7 +4,6 @@
 #include <string>
 #include <iostream>
 
-using namespace std;
 /**
 * @brief Classe que contempla os métodos do usuário, como construtores, getters e setters.
 */
@@ -13,15 +12,15 @@ class Usuario{
         /**
         * @brief atributo que armazena o nome do usuário.
         */
-        string nomeUsuario;
+        std::string nomeUsuario;
         /**
         * @brief atributo que armazena o email do usuário.
         */
-        string emailUsuario;
+        std::string emailUsuario;
         /**
         * @brief atributo que armazena a senha do usuário.
         */
-        string senhaUsuario;
+        std::string senhaUsuario;
 
     public:
         /**
@@ -35,40 +34,26 @@ class Usuario{
         * @param senhaUsuario Senha do usuário.
         * @param nomeUsuario Nome do usuário.
         */
-        Usuario(string emailUsuario, string senhaUsuario, string nomeUsuario){
-            this->emailUsuario = emailUsuario;
-            this->nomeUsuario = nomeUsuario;
-            this->senhaUsuario = senhaUsuario;
-        }
-        /*/DESTRUTOR
-        ~Usuario(){
-          delete novoUsuario;
-        }*/
+        Usuario(std::string emailUsuario, std::string senhaUsuario, std::string nomeUsuario);
+        /**
+         * @brief Método destrutor da classe. 
+        */
+        ~Usuario();
         /**
         * @brief método get que retorna o nome do usuário.
         */
-        string getUsuario(){
-          return nomeUsuario;
-        }
+        std::string getUsuario();
         /**
         * @brief método get que retorna o email do usuário.
         */
-        string getEmail(){
-          return emailUsuario;
-        }
+        std::string getEmail();
         /**
         * @brief método get que retorna a senha do usuário.
         */
-        string getSenha(){
-          return senhaUsuario;
-        }
+        std::string getSenha();
         /**
         * @brief método get que retorna o ID do usuário.
         */
-        int getId(){
-          return idUsuario;
-        }
-
-        
+        int getId();   
 };
 #endif

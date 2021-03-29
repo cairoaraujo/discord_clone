@@ -41,7 +41,7 @@ class Sistema {
   int usuarioID = 0;
   int servidorID = 0;
   bool estaConectado;
-  bool estaLogado;
+  bool estaLogado = false;
 
   /**
    * Sairá imediatamente do Concordo.
