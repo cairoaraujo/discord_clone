@@ -5,6 +5,9 @@
 #include <iostream>
 
 /**
+ * @author Cairo Araujo
+*/
+/**
 * @brief Classe que contempla os métodos do usuário, como construtores, getters e setters.
 */
 class Usuario{

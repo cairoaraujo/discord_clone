@@ -71,19 +71,20 @@ $(function() {
  Discente: Cairo Bezerra Cortez de Araújo - <a href="https://github.com/cairoaraujo"><b>Github</b></a><br  />
  Docente: Júlio Cesar Paulino de Melo<br  />
 </p>
-<p>OBS: Para acessar a Documentação completa do Concordo, <a href="https://htmlpreview.github.io/?https://github.com/ITP-2020-2-T01/atividade-3-cairoaraujo/blob/master/Documentacao/html/index.html" target="_blank">clique aqui</a> ou procure pelo diretório: Documentacao/html/index.html.</p>
-<h1><a class="anchor" id="autotoc_md1"></a>
+<h3><a class="anchor" id="autotoc_md1"></a>
+OBS: Para acessar a Documentação completa do Concordo, acesse a pasta 'Documentacao' e procure pelo formato rtf(documento Word), html (abrir o arquivo index.html por algum navegador) ou LaTeX.</h3>
+<h1><a class="anchor" id="autotoc_md2"></a>
 Para compilar</h1>
 <p>O projeto do concordo possui Makefile, o que facilita o processo de compilação. Para compilar, basta usar a seguinte linha de comando:</p>
 <div class="fragment"><div class="line">make concordo</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
 Para executar</h1>
 <p>Você pode rodar o sistema e em logo depois digitar os comandos seguidos de ENTER </p><div class="fragment"><div class="line">./concordo</div>
 </div><!-- fragment --><p>Ou pode criar um arquivo de texto com uma lista de comandos (um por linha) e executar o sistema redirecionando esse arquivo como entrada padrão: </p><div class="fragment"><div class="line">./concordo &lt; script_comandos.txt</div>
-</div><!-- fragment --> <h1><a class="anchor" id="autotoc_md3"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="autotoc_md4"></a>
 Usando o Concordo</h1>
 <p>O Concordo possui as seguintes funções:</p>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Funções de Usuário:</h2>
 <ul>
 <li><b>create-user:</b> a função espera os parâmetros "Email" "Senha" e "Nome", respectivamente. O email e senha não devem possuir espaços, porém o Nome pode conter. Caso o usuário não informe algum dos parâmetros, o mesmo ficará vazio, porém o cadastro ainda funcionará.</li>
@@ -91,7 +92,7 @@ Funções de Usuário:</h2>
 <li><b>disconnect:</b> Irá desconectar o usuário logado. Caso não haja usuário logado, a função retornará erro.</li>
 <li><b>quit:</b> Sairá imediatamente do Concordo.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Funções de Servidor:</h2>
 <ul>
 <li><b>Create-server:</b> Função que cria um novo servidor, cujo recebe como parâmetro apenas o nome do servidor fornecido pelo usuário. É necessário que haja algum usuário logado, caso contrário, retornará um erro.</li>
@@ -103,71 +104,71 @@ Funções de Servidor:</h2>
 <li><b>Set-server-desc:</b> Com o usuário logado, essa função poderá adicionar uma descrição para o servidor informado pelo usuário. O parâmetro da funação receberá do usuário respectivamente o <b>nome do servidor</b> e a <b>descrição</b>. A descrição pode ser alterada por qualquer usuário e, por default, a descrição de um servidor é vazia.</li>
 <li><b>Set-server-invite-code:</b> Com usuário dono do servidor logado, essa função criará um código-convite de determinado servidor. Assim, a única forma de acessar o servidor é informando esse código. O usuário deve informar, respectivamente, o <b>nome do servidor</b> e o **código convite desejado.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<h1><a class="anchor" id="autotoc_md7"></a>
 Implementações</h1>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 A1.1 - Sair do sistema</h2>
 <ul>
 <li>O quesito A1.1 é implementado na classe <a class="el" href="class_sistema.html" title="Classe onde se concentra todas as operações do Concordo.">Sistema</a>, no método <b>quit()</b> (linha 14 em sistema.cpp); </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 A1.2 - Criar usuário</h2>
 <ul>
 <li>O quesito A1.1 é implementado na classe <a class="el" href="class_sistema.html" title="Classe onde se concentra todas as operações do Concordo.">Sistema</a>, no método <b>create-user()</b> (linha 18 em sistema.cpp); </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 A1.3 - Entrar no sistema</h2>
 <ul>
 <li>O quesito A1.3 é implementado na classe <a class="el" href="class_sistema.html" title="Classe onde se concentra todas as operações do Concordo.">Sistema</a>, no método <b>login()</b> (linha 59 em sistema.cpp);</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 A2.1 - Desconectar do Concordo</h2>
 <ul>
 <li>O quesito A2.1 é implementado na classe <a class="el" href="class_sistema.html" title="Classe onde se concentra todas as operações do Concordo.">Sistema</a>, no método <b>disconnect()</b> (linha 89 em sistema.cpp); </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 A2.2 - Criar servidores (nome)</h2>
 <ul>
 <li>O quesito A2.2 é implementado na classe <a class="el" href="class_sistema.html" title="Classe onde se concentra todas as operações do Concordo.">Sistema</a>, no método <b>create-server()</b> (linha 99 em sistema.cpp); </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 A2.3 - Mudar a descrição do servidor</h2>
 <ul>
 <li>O quesito A2.3 é implementado na classe <a class="el" href="class_sistema.html" title="Classe onde se concentra todas as operações do Concordo.">Sistema</a>, no método <b>set-server-desc()</b> (linha 120 em sistema.cpp); </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 A2.4 - Setar código de convite para o servidor</h2>
 <ul>
 <li>O quesito A2.4 é implementado na classe <a class="el" href="class_sistema.html" title="Classe onde se concentra todas as operações do Concordo.">Sistema</a>, no método <b>set-server-desc()</b> (linha 136 em sistema.cpp); </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md14"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 A2.5 - Listar servidores</h2>
 <ul>
 <li>O quesito A2.5 é implementado na classe <a class="el" href="class_sistema.html" title="Classe onde se concentra todas as operações do Concordo.">Sistema</a>, no método <b>list-servers()</b> (linha 166 em sistema.cpp); </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 A2.6 - Remover servidor</h2>
 <ul>
 <li>O quesito A2.6 é implementado na classe <a class="el" href="class_sistema.html" title="Classe onde se concentra todas as operações do Concordo.">Sistema</a>, no método <b>remove-server()</b> (linha 177 em sistema.cpp); </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md17"></a>
 A2.7 - Entrar em um servidor</h2>
 <ul>
 <li>O quesito A2.7 é implementado na classe <a class="el" href="class_sistema.html" title="Classe onde se concentra todas as operações do Concordo.">Sistema</a>, no método <b>enter-server()</b> (linha 204 em sistema.cpp); </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 A2.8 - Sair do servidor</h2>
 <ul>
 <li>O quesito A2.8 é implementado na classe <a class="el" href="class_sistema.html" title="Classe onde se concentra todas as operações do Concordo.">Sistema</a>, no método <b>leave-server()</b> (linha 249 em sistema.cpp); </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md18"></a>
+<h2><a class="anchor" id="autotoc_md19"></a>
 A2.9 - Listar pessoas no servidor</h2>
 <ul>
 <li>O quesito A2.9 é implementado na classe <a class="el" href="class_sistema.html" title="Classe onde se concentra todas as operações do Concordo.">Sistema</a>, no método <b>list-participants()</b> (linha 259 em sistema.cpp);</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md19"></a>
+<h1><a class="anchor" id="autotoc_md20"></a>
 Exemplos de uso</h1>
-<h3><a class="anchor" id="autotoc_md20"></a>
+<h3><a class="anchor" id="autotoc_md21"></a>
 1 - Criando 2 usuários, depois logando no usuário 1 e criando um servidor. Em seguida, acessando o servidor e criando uma descrição e um código convite. Após isso, desconectar do usuário 1 e logar com o usuário 2, entrar no servidor usando o código convite e listar participantes e servidores.</h3>
 <div class="fragment"><div class="line">create-user usuario@email.com senha Fulano de Tal</div>
 <div class="line">create-user usuario2@email.com senha2 Ciclano de Tal</div>

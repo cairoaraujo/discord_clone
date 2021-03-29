@@ -9,6 +9,9 @@
 using namespace std;
 
 /**
+ * @author Cairo Araujo
+*/
+/**
  *  @brief Classe onde se concentra todas as operações do Concordo
 */
 class Sistema {

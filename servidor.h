@@ -3,7 +3,9 @@
 #include <vector>
 #include <string>
 #include <iostream>
-
+/**
+ * @author Cairo Araujo
+*/
 /**
 * @brief Classe que contempla atributos e métodos dos Servidores do Concordo.
 */
