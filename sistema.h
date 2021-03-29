@@ -8,17 +8,32 @@
 
 using namespace std;
 
-// Sistema deve concentrar todas as operações do Concordo
+/**
+ *  @brief Classe onde se concentra todas as operações do Concordo
+*/
 class Sistema {
   private:
-    //vector que armazena usuarios
+    /**
+     * @brief vector que armazena todos os Usuarios do Concordo.
+    */
     vector<Usuario*> vectorUsuarios;
-
-    //vector que armazena servidores
+    /**
+     * @brief vector que armazena todos os Servidores do Concordo.
+    */
     vector<Servidor*> vectorServidores;
+    /**
+     * @brief Variável que armazena o nome do Usuario logado atualmente.
+    */
     string nomeUsuarioLogado;
-    int usuarioLogadoId; // se 0: não logado, caso contrário guarda o id do usuário logado
+    /**
+     * @brief se 0: não logado, caso contrário guarda o id do usuário logado
+    */
+    int usuarioLogadoId;
+    /**
+     * @brief Variável que armazena o nome do servidor atualmente conectado pelo usuário.
+    */
     string nomeServidorConectado;
+
     string nomeCanalConectado;
 
   public:
@@ -27,92 +42,99 @@ class Sistema {
   int servidorID = 0;
   bool estaConectado;
   bool estaLogado;
+
   /**
    * Sairá imediatamente do Concordo.
   */
   string quit();
   /**
-   * A função espera os parâmetros "Email" "Senha" e "Nome", respectivamente. 
-   O email e senha não devem possuir espaços, porém o Nome pode conter. 
-   Caso o usuário não informe algum dos parâmetros, o mesmo ficará vazio, porém o cadastro ainda funcionará.
+   * @brief Método para criação de um novo usuário. Caso o usuário não informe algum dos parâmetros, o mesmo ficará vazio, porém o cadastro ainda funcionará.
+   * @param email Email do usuário, sem espaços.
+   * @param senha Senha do usuário. Aceita letras, símbolos e números, mas sem espaços.
+   * @param Nome Nome do usuário. Aceita espaços.
   */
   string create_user (const string email, const string senha, const string nome);
   /**
-   * Espera-se que o usuário informe o **email** e **Senha**, respectivamente. 
-   Caso o usuário não exista, o login retornará erro. 
-   Caso contrário, o usuário entrará no Concordo. 
-   O sistema aceita somente 1 usuário por vez, então caso haja o comando **login** já com algum usuário logado,
-   a função retornará erro.
+   * @brief Método que realiza o login de usuário no Concordo.
+   * @param email Email do usuário, sem espaços.
+   * @param senha Senha do usuário. Aceita letras, símbolos e números, mas sem espaços. 
+   * @return Caso o usuário não exista, o login retornará erro. Caso contrário, o usuário entrará no Concordo. 
   */
   string login(const string email, const string senha);
   /**
-   * Irá desconectar o usuário logado. Caso não haja usuário logado, a função retornará erro.
+   * @brief Método que realiza a desconexão do atual usuário.
+   * @return Caso exista usuário logado, retornará mensagem de sucesso. Caso contrário, retornará mensagem de erro.
   */
   string disconnect();
   /**
-   * Função que cria um novo servidor, cujo recebe como parâmetro apenas o nome do servidor fornecido pelo usuário. 
-   É necessário que haja algum usuário logado, caso contrário, retornará um erro.
+   * @brief Método que realiza a criação de um novo servidor. É preciso estar logado com algum usuário antes.
+   * @param nome Nome do servidor, sem espaços.
+   * @return Caso haja usuário logado, retornará mensagem de sucesso, caso contrário, mensagem de erro. 
   */
   string create_server(const string nome);
   /**
-   * Com o usuário logado, essa função poderá adicionar uma descrição para o servidor informado pelo usuário.
-   O parâmetro da funação receberá do usuário respectivamente o **nome do servidor** e a **descrição**. 
-   A descrição pode ser alterada por qualquer usuário e, por default, a descrição de um servidor é vazia.
+   * @brief Método que realiza a criação de uma descrição para o servidor informado. Aceita espaços.
+   * @param nome Nome do Servidor que deseja adicionar a descrição, sem espaços.
+   * @param descricao Descrição desejada para o Servidor. 
+   * @return Caso encontre o Servidor informado, retornará mensagem de sucesso. Caso contrário, retornará mensagem de erro. 
   */
   string set_server_desc(const string nome, const string descricao);
   /**
-   * Com usuário dono do servidor logado, essa função criará um código-convite de determinado servidor. 
-   Assim, a única forma de acessar o servidor é informando esse código. 
-   O usuário deve informar, respectivamente, o **nome do servidor** e o **código convite desejado**.
-   */
+   * @brief Método que realiza a criação de um código convite para o servidor informado. Para isso, **o usuário logado deve ser o dono do servidor**. Não aceita espaços.
+   * @param nome Nome do Servidor que deseja adicionar o código convite, sem espaços.
+   * @param codigo Código convite que deseja adicionar ao servidor. 
+   * @return Caso encontre o Servidor informado, retornará mensagem de sucesso. Caso contrário, retornará mensagem de erro. 
+  */
   string set_server_invite_code(const string nome, const string codigo);
   /**
-   * Imprime todos os servidores já criados, com suas respectivas descrições. 
-   Caso a descrição esteja vazia, não imprimirá a descrição.
-   */
+   * @brief Método que realiza a impressão de todos os servidores existentes no Concordo
+  */
   string list_servers();
   /**
-   * Remove o servidor informado. Recebe como parâmetro o **nome do servidor** que deseja-se remover. 
-   Retornará mensagem de erro caso o servidor informado não exista.
+   * @brief Método que realiza a remoção de um servidor.
+   * @param nome Nome do Servidor que deseja-se excluir.
+   * @return Caso encontre o Servidor informado, retornará mensagem de sucesso. Caso contrário, retornará mensagem de erro. 
   */
   string remove_server(const string nome);
   /**
-   * Função que fará o usuário logado entrar em determinado servidor já criado. 
-   Para usar a função, o usuário deve informar o **nome do servidor** e o **código convite**, respectivamente. 
-   Caso o servidor específico não possua código convite, não é necessário informar esse parâmetro.
+   * @brief Método que realiza a entrada do usuário logado ao servidor informado.
+   * @param nome Nome do Servidor que deseja entrar.
+   * @param codigo Código convite do servidor. Caso não haja, deixar em branco. 
+   * @return Caso encontre o Servidor informado e o código informado esteja correto, retornará mensagem de sucesso. Caso contrário, retornará mensagem de erro. 
   */
   string enter_server(const string nome, const string codigo);
   /**
-   * A função leave-server irá remover o usuário logado do servidor atual.
-    Assim, caso o usuário deseje acessar o servidor novamente, será preciso usar a função enter-server.
+   * @brief Método que realiza a remoção do usuário logado ao servidor informado.
+   * @return Caso o usuário esteja em algum servidor, retornará mensagem de sucesso. Caso contrário, retornará mensagem de erro.
   */
   string leave_server();
   /**
-   * Essa função imprimirá a lista de participantes do servidor atual onde o usuário está conectado.
+   *@brief Método que imprimirá a lista de participantes do servidor atual onde o usuário está conectado.
+   *@return Lista de participantes do servidor. Se não houver participantes, imprimirá vazio.
   */
   string list_participants();
   /**
-   * Função ainda não implementada.
+   * @brief Função ainda não implementada.
   */
   string list_channels();
   /**
-   * Função ainda não implementada.
+   * @brief Função ainda não implementada.
   */
   string create_channel(const string nome, const string tipo);
   /**
-   * Função ainda não implementada.
+   * @brief Função ainda não implementada.
   */
   string enter_channel(const string nome);
   /**
-   * Função ainda não implementada.
+   * @brief Função ainda não implementada.
   */
   string leave_channel();
   /**
-   * Função ainda não implementada.
+   * @brief Função ainda não implementada.
   */
   string send_message(const string mensagem);
   /**
-   * Função ainda não implementada.
+   * @brief Função ainda não implementada.
   */
   string list_messages();
 };

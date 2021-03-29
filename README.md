@@ -1,7 +1,7 @@
 # Concordo - Um elegante clone do Discord. - Versão 1.0
 
 Disciplina: Linguagem de Programação I<br>
-Discente: Cairo Bezerra Cortez de Araújo<br>
+Discente: Cairo Bezerra Cortez de Araújo - <a href="https://github.com/cairoaraujo"><b>Github</b></a><br> 
 Docente: Júlio Cesar Paulino de Melo<br>
 
 
@@ -53,6 +53,39 @@ O Concordo possui as seguintes funções:
 - **Set-server-desc:** Com o usuário logado, essa função poderá adicionar uma descrição para o servidor informado pelo usuário. O parâmetro da funação receberá do usuário respectivamente o **nome do servidor** e a **descrição**. A descrição pode ser alterada por qualquer usuário e, por default, a descrição de um servidor é vazia.
 
 - **Set-server-invite-code:** Com usuário dono do servidor logado, essa função criará um código-convite de determinado servidor. Assim, a única forma de acessar o servidor é informando esse código. O usuário deve informar, respectivamente, o **nome do servidor** e o **código convite desejado.
+
+## Implementações
+
+### A1.1 - Sair do sistema
+- O quesito A1.1 é implementado na classe Sistema, no método **quit()** (linha 14 em sistema.cpp);
+### A1.2 - Criar usuário
+- O quesito A1.1 é implementado na classe Sistema, no método **create-user()** (linha 18 em sistema.cpp);
+### A1.3 - Entrar no sistema
+- O quesito A1.3 é implementado na classe Sistema, no método **login()** (linha 59 em sistema.cpp);
+
+### A2.1 - Desconectar do Concordo
+- O quesito A2.1 é implementado na classe Sistema, no método **disconnect()** (linha 89 em sistema.cpp);
+### A2.2 - Criar servidores (nome)
+- O quesito A2.2 é implementado na classe Sistema, no método **create-server()** (linha 99 em sistema.cpp);
+### A2.3 - Mudar a descrição do servidor
+- O quesito A2.3 é implementado na classe Sistema, no método **set-server-desc()** (linha 120 em sistema.cpp);
+### A2.4 - Setar código de convite para o servidor
+- O quesito A2.4 é implementado na classe Sistema, no método **set-server-desc()** (linha 136 em sistema.cpp);
+### A2.5 - Listar servidores
+- O quesito A2.5 é implementado na classe Sistema, no método **list-servers()** (linha 166 em sistema.cpp);
+### A2.6 - Remover servidor
+- O quesito A2.6 é implementado na classe Sistema, no método **remove-server()** (linha 177 em sistema.cpp);
+### A2.7 - Entrar em um servidor
+- O quesito A2.7 é implementado na classe Sistema, no método **enter-server()** (linha 204 em sistema.cpp);
+### A2.8 - Sair do servidor
+- O quesito A2.8 é implementado na classe Sistema, no método **leave-server()** (linha 249 em sistema.cpp);
+### A2.9 - Listar pessoas no servidor
+- O quesito A2.9 é implementado na classe Sistema, no método **list-participants()** (linha 259 em sistema.cpp);
+
+
+
+
+
 
 ## Exemplos de uso
 

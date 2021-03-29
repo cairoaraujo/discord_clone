@@ -6,7 +6,9 @@
 #include <sstream>
 
 using namespace std;
-
+/**
+ * @brief Classe que contempla no tratamento dos comandos informados pelo usuário. 
+*/
 class Executor {
   private:
   Sistema * sistema;
