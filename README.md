@@ -89,7 +89,7 @@ O Concordo possui as seguintes funções:
 
 ## Exemplos de uso
 
-#### 1 - Criando 2 usuários e 1 servidor. Em seguida, os 2 usuários acessam o servidor, onde se altera a sua descrição e adiciona um código-convite.
+#### 1 - Criando 2 usuários, depois logando no usuário 1 e criando um servidor. Em seguida, acessando o servidor e criando uma descrição e um código convite. Após isso, desconectar do usuário 1 e logar com o usuário 2, entrar no servidor usando o código convite e listar participantes e servidores.
 
 ```console
 create-user usuario@email.com senha Fulano de Tal
