@@ -4,7 +4,7 @@ Disciplina: Linguagem de Programação I<br>
 Discente: Cairo Bezerra Cortez de Araújo - <a href="https://github.com/cairoaraujo"><b>Github</b></a><br> 
 Docente: Júlio Cesar Paulino de Melo<br>
 
-OBS: Para acessar a Documentação completa do Concordo, <a target="_blank" href="\Documentacao\html\index.html">clique aqui</a> ou procure pelo diretório: Documentacao/html/index.html.
+OBS: Para acessar a Documentação completa do Concordo, <a target="_blank" href="https://htmlpreview.github.io/?https://github.com/ITP-2020-2-T01/atividade-3-cairoaraujo/blob/master/Documentacao/html/index.html">clique aqui</a> ou procure pelo diretório: Documentacao/html/index.html.
 
 
 ## Para compilar
