@@ -8,21 +8,6 @@
 
 using namespace std;
 
-//DECLARACOES:
-
-  //Vector que armazena todos os usuários criados no Concordo:
-  bool estaConectado;
-
-//VARIAVEIS:
-
-  //Contador para os IDs do usuario:
-  int usuarioID = 0;
-  int servidorID = 0;
-  //Variavel booleana que retorna true se logado e false se não logado
-  bool estaLogado;
-  //Variavel que controla se usuario ja foi criado
-
-  
 
 /* COMANDOS */
 
@@ -30,10 +15,10 @@ string Sistema::quit() {
   return "Saindo...";
 }
 
-string Sistema::create_user (const string email, const string senha, const string nome) {//se não há usuarios criados, não precisa verificar se os dados já foram cadastrados.
-    bool emailJaUsado;//variavel de controle para verificar se email ja foi usado ou nao. Retorna true se sim.
+string Sistema::create_user (const string email, const string senha, const string nome) {
+    bool emailJaUsado; //variável de controle para verificar se email ja foi usado ou não. Retorna true se sim.
 
-    if(!vectorUsuarios.empty()){//se  ja existem elementos no vetor...
+    if(!vectorUsuarios.empty()){ //se  já existem usuários criados...
       for (int u=0; u < vectorUsuarios.size(); u++){
         if (email == vectorUsuarios[u]->getEmail()){
           cout<<"O email ja foi cadastrado!"<<endl;
@@ -42,7 +27,7 @@ string Sistema::create_user (const string email, const string senha, const strin
         }  
       }
 
-      if(!emailJaUsado){//se o email nao foi utilizado ainda, ha a criacao de um novo usuario
+      if(!emailJaUsado){ //se o email nao foi utilizado ainda, há a criação de um novo usuário
         usuarioID++;
         Usuario  *novoUsuario = new Usuario (email, senha, nome);
         novoUsuario->idUsuario = usuarioID;
@@ -60,7 +45,7 @@ string Sistema::create_user (const string email, const string senha, const strin
       }
           
     }
-    if(vectorUsuarios.empty()){
+    if(vectorUsuarios.empty()){ //se ainda não há usuários criados...
       usuarioID++;
       Usuario  *novoUsuario = new Usuario (email, senha, nome);
       novoUsuario->idUsuario = usuarioID;
@@ -72,7 +57,7 @@ string Sistema::create_user (const string email, const string senha, const strin
 
 
 string Sistema::login(const string email, const string senha) {
-  if(estaLogado == false){//verifica se ja existe algum usuario logado no sistema. Se sim, impede de fazer um novo login
+  if(estaLogado == false){//verifica se já existe algum usuário logado no sistema. Se sim, impede de fazer um novo login
 
     for (int u=0; u< vectorUsuarios.size();u++){
 
@@ -96,7 +81,7 @@ string Sistema::login(const string email, const string senha) {
     }
   }
   else{
-    cout <<"ja existe um usuario logado! Desconecte do usuario atual e tente novamente!"<<endl;
+    cout <<"Já existe um usuario logado! Desconecte do usuario atual e tente novamente!"<<endl;
   }
   return "";
 }
@@ -114,24 +99,18 @@ string Sistema::disconnect() {
 string Sistema::create_server(const string nome) {
   if (estaLogado == true){ //só poderá criar servidor se houver usuário logado
     servidorID++;
-    //há a criação do objeto novoServidor de forma dinâmica
-    Servidor  *novoServidor = new Servidor(nome);
-    //o atributo idServidor do objeto novoServidor recebe o valor da variável servidorID
+    Servidor  *novoServidor = new Servidor(nome); //há a criação do objeto novoServidor de forma dinâmica
     novoServidor->idServidor = servidorID;
-    //adiciono o objeto no final do vectorServidores
     vectorServidores.push_back(novoServidor);
-    //armazeno o ID do usuário dono do server a partir da ID do usuario logado
     novoServidor->setUsuarioDonoID(usuarioLogadoId);
-    //cout<<"ID do usuario que criou o servidor '"<<novoServidor->getNomeServidor()<<"': "<<novoServidor->getUsuarioDonoID()<<endl;
-    //cout<<"ID do servidor:"<<novoServidor->idServidor<<endl;
 
-    /*/armazeno o nome do usuario que entrou no servidor
+    /*armazeno o nome do usuario que entrou no servidor
     vectorServidores[novoServidor->idServidor - 1]->vectorNomeParticipantesServidor.push_back(nomeUsuarioLogado);*/
-
     //armazeno o id do usuario que entrou no servidor
     //vectorServidores[novoServidor->idServidor]->vectorParticipantesIDs.push_back(usuarioLogadoId);
-    cout <<novoServidor->getNomeServidor() << "(ID = " << novoServidor->idServidor << " )";
-    return " criado com sucesso!";
+
+    cout <<"O servidor '"<<novoServidor->getNomeServidor() << "'(ID = " << novoServidor->idServidor << ")";
+    return " foi criado com sucesso!";
   }
   else{
     return "Para criar um servidor, é preciso estar logado!";
@@ -139,27 +118,28 @@ string Sistema::create_server(const string nome) {
 }
 
 string Sistema::set_server_desc(const string nome, const string descricao) {
-  bool encontrouServidor;
+  bool encontrouServidor = false;
   int aux;
-  for (int u=0; u < vectorServidores.size();u++){
-
-    //cout<<"DEBUG: ENTROU "<< u << " VEZES"<<endl;
-
+  for (int u=0; u < vectorServidores.size();u++){//Percorre o vector e verifica se existe o servidor informado.
     if(vectorServidores[u]->getNomeServidor() == nome){
 
       vectorServidores[u]->setDescricaoServidor(descricao);
-      return "Descricao alterada com sucesso!";
+      encontrouServidor = true;
     }
   }
-
-  return " ";
+  if(encontrouServidor)
+    return "Descricao alterada com sucesso!";
+  else
+    return "Erro ao mudar descricao do servidor: servidor nao encontrado!";
 }
 
 string Sistema::set_server_invite_code(const string nome, const string codigo) {
   bool encontrouServidor;
   int aux;
-
-  for(int u = 0; u < vectorServidores.size();u++){//ao percorrer o vector, será verificado se o nome do servidor informado pelo usuário realmente existe. Se sim, há a verificação se o usuário logado é o dono do servidor. Caso ambas as condições sejam verdadeiras, o código informado pelo usuário será o código-convite do servidor.
+  //Ao percorrer o vector, será verificado se o nome do servidor informado pelo usuário realmente existe. 
+  //Se sim, há a verificação se o usuário logado é o dono do servidor. 
+  //Caso ambas as condições sejam verdadeiras, o código informado pelo usuário será o código-convite do servidor.
+  for(int u = 0; u < vectorServidores.size();u++){
 
     if(nome == vectorServidores[u]->getNomeServidor()){
       if(usuarioLogadoId == vectorServidores[u]->getUsuarioDonoID()){
@@ -205,8 +185,7 @@ string Sistema::remove_server(const string nome) {
         if(nome == nomeServidorConectado){
           nomeServidorConectado = "";
         }
-
-      }//adicionar ID para cada server
+      }
     }
     if(removeuServidor){
       cout <<nomeServidorConectado;
@@ -226,23 +205,36 @@ string Sistema::enter_server(const string nome, const string codigo= "vazio") {
 
   //O laço percorrerá o vector e irá verificar se o nome do servidor existe. Se existir, verificará se o código informado pelo usuário é o código-convite do servidor. Se sim, o usuário logado será adicionado ao vectorParticipantesIDs.
   bool encontrouServidor = false;
+  bool usuarioRepetido = false;
   for (int u = 0; u < vectorServidores.size();u++){
     if(vectorServidores[u]->getNomeServidor() == nome){
       if (codigo == vectorServidores[u]->getCodigoConviteServidor()){
-        //armazeno o nome do usuario que entrou no servidor
-        vectorServidores[u]->vectorNomeParticipantesServidor.push_back(nomeUsuarioLogado);
 
-        //armazeno o id do usuario que entrou no servidor
-        vectorServidores[u]->vectorParticipantesIDs.push_back(usuarioLogadoId);
+        for (int i = 0; i < vectorServidores[u]->vectorNomeParticipantesServidor.size(); i ++){//laço que verificará se o usuário já está nesse servidor
+          if(vectorServidores[u]->vectorNomeParticipantesServidor[i] == nomeUsuarioLogado){
+            usuarioRepetido = true;
+          }
+        }
+        if(!usuarioRepetido){
+          //armazeno o nome do usuario que entrou no servidor
+          vectorServidores[u]->vectorNomeParticipantesServidor.push_back(nomeUsuarioLogado);
 
-        //armazena o nome do servidor que o usuário está conectado atualmente
-        nomeServidorConectado = vectorServidores[u]->getNomeServidor();
-        encontrouServidor = true;
-        estaConectado = true;
-        return "Usuario entrou no servidor";
+          //armazeno o id do usuario que entrou no servidor
+          vectorServidores[u]->vectorParticipantesIDs.push_back(usuarioLogadoId);
+
+          //armazena o nome do servidor que o usuário está conectado atualmente
+          nomeServidorConectado = vectorServidores[u]->getNomeServidor();
+          encontrouServidor = true;
+          estaConectado = true;
+          return "Usuario entrou no servidor.";
+        }
+        else{
+          return "O usuario ja esta no servidor!";
+        }
+
       }
       else{
-        cout <<"Codigo errado. Tente novamente."<<endl;
+        return "Codigo errado. Tente novamente.";
       }
     }
   }
@@ -252,15 +244,14 @@ string Sistema::enter_server(const string nome, const string codigo= "vazio") {
   else{
     return "ERRO!";
   }
-  return " ";
 }
 
 string Sistema::leave_server() {
-  if(nomeServidorConectado != ""){
+  if(nomeServidorConectado != ""){//Isso significa que o usuário está conectado a algum servidor, pois o nome != de vazio
     nomeServidorConectado = "";
     return "Sucesso ao sair do servidor!";
   }
-  else{
+  else{ //Se o nome do server conectado for vazio, isso quer dizer que o usuário não está conectado a nenhum server.
     return "Erro ao sair de servidor! Voce não esta conectado a nenhum!";
   }
 }
