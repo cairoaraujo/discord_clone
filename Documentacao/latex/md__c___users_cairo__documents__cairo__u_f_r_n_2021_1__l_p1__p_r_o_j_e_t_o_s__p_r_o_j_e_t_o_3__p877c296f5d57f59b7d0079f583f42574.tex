@@ -1,0 +1,113 @@
+Disciplina\+: Linguagem de Programação I~\newline
+ Discente\+: Cairo Bezerra Cortez de Araújo -\/ \href{https://github.com/cairoaraujo}{\texttt{ {\bfseries{Github}}}}~\newline
+ Docente\+: Júlio Cesar Paulino de Melo~\newline
+
+
+OBS\+: Para acessar a Documentação completa do Concordo, \href{\\Documentacao\\html\\index.html}{\texttt{ clique aqui}} ou procure pelo diretório\+: Documentacao/html/index.\+html.\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md1}{}\doxysection{Para compilar}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md1}
+O projeto do concordo possui Makefile, o que facilita o processo de compilação. Para compilar, basta usar a seguinte linha de comando\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make concordo}
+
+\end{DoxyCode}
+\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md2}{}\doxysection{Para executar}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md2}
+Você pode rodar o sistema e em logo depois digitar os comandos seguidos de ENTER 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./concordo}
+
+\end{DoxyCode}
+
+
+Ou pode criar um arquivo de texto com uma lista de comandos (um por linha) e executar o sistema redirecionando esse arquivo como entrada padrão\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./concordo < script\_comandos.txt}
+
+\end{DoxyCode}
+ \hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md3}{}\doxysection{Usando o Concordo}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md3}
+O Concordo possui as seguintes funções\+:\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md4}{}\doxysubsection{Funções de Usuário\+:}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md4}
+
+\begin{DoxyItemize}
+\item {\bfseries{create-\/user\+:}} a função espera os parâmetros \char`\"{}\+Email\char`\"{} \char`\"{}\+Senha\char`\"{} e \char`\"{}\+Nome\char`\"{}, respectivamente. O email e senha não devem possuir espaços, porém o Nome pode conter. Caso o usuário não informe algum dos parâmetros, o mesmo ficará vazio, porém o cadastro ainda funcionará.
+\item {\bfseries{login\+:}} Espera-\/se que o usuário informe o \char`\"{}\+Email\char`\"{} e \char`\"{}\+Senha\char`\"{}, respectivamente. Caso o usuário não exista, o login retornará erro. Caso contrário, o usuário entrará no Concordo. O sistema aceita somente 1 usuário por vez, então caso haja o comando {\bfseries{login}} já com algum usuário logado, a função retornará erro.
+\item {\bfseries{disconnect\+:}} Irá desconectar o usuário logado. Caso não haja usuário logado, a função retornará erro.
+\item {\bfseries{quit\+:}} Sairá imediatamente do Concordo.
+\end{DoxyItemize}\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md5}{}\doxysubsection{Funções de Servidor\+:}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md5}
+
+\begin{DoxyItemize}
+\item {\bfseries{Create-\/server\+:}} Função que cria um novo servidor, cujo recebe como parâmetro apenas o nome do servidor fornecido pelo usuário. É necessário que haja algum usuário logado, caso contrário, retornará um erro.
+\item {\bfseries{Enter-\/server\+:}} Função que fará o usuário logado entrar em determinado servidor já criado. Para usar a função, o usuário deve informar o {\bfseries{nome do servidor}} e o {\bfseries{código convite}}, respectivamente. Caso o servidor específico não possua código convite, não é necessário informar esse parâmetro.
+\item {\bfseries{Leave-\/server\+:}} a função leave-\/server irá remover o usuário logado do servidor atual. Assim, caso o usuário deseje acessar o servidor novamente, será preciso usar a função enter-\/server.
+\item {\bfseries{Remove-\/server\+:}} Remove o servidor informado. Recebe como parâmetro o {\bfseries{nome do servidor}} que deseja-\/se remover. Retornará mensagem de erro caso o servidor informado não exista.
+\item {\bfseries{List-\/participants\+:}} Essa função imprimirá a lista de participantes do servidor atual onde o usuário está conectado.
+\item {\bfseries{List-\/servers\+:}}\+: Imprime todos os servidores já criados, com suas respectivas descrições. Caso a descrição esteja vazia, não imprimirá a descrição.
+\item {\bfseries{Set-\/server-\/desc\+:}} Com o usuário logado, essa função poderá adicionar uma descrição para o servidor informado pelo usuário. O parâmetro da funação receberá do usuário respectivamente o {\bfseries{nome do servidor}} e a {\bfseries{descrição}}. A descrição pode ser alterada por qualquer usuário e, por default, a descrição de um servidor é vazia.
+\item {\bfseries{Set-\/server-\/invite-\/code\+:}} Com usuário dono do servidor logado, essa função criará um código-\/convite de determinado servidor. Assim, a única forma de acessar o servidor é informando esse código. O usuário deve informar, respectivamente, o {\bfseries{nome do servidor}} e o $\ast$$\ast$código convite desejado.
+\end{DoxyItemize}\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md6}{}\doxysection{Implementações}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md6}
+\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md7}{}\doxysubsection{A1.\+1 -\/ Sair do sistema}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md7}
+
+\begin{DoxyItemize}
+\item O quesito A1.\+1 é implementado na classe \mbox{\hyperlink{class_sistema}{Sistema}}, no método {\bfseries{quit()}} (linha 14 em sistema.\+cpp); 
+\end{DoxyItemize}\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md8}{}\doxysubsection{A1.\+2 -\/ Criar usuário}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md8}
+
+\begin{DoxyItemize}
+\item O quesito A1.\+1 é implementado na classe \mbox{\hyperlink{class_sistema}{Sistema}}, no método {\bfseries{create-\/user()}} (linha 18 em sistema.\+cpp); 
+\end{DoxyItemize}\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md9}{}\doxysubsection{A1.\+3 -\/ Entrar no sistema}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md9}
+
+\begin{DoxyItemize}
+\item O quesito A1.\+3 é implementado na classe \mbox{\hyperlink{class_sistema}{Sistema}}, no método {\bfseries{login()}} (linha 59 em sistema.\+cpp);
+\end{DoxyItemize}\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md10}{}\doxysubsection{A2.\+1 -\/ Desconectar do Concordo}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md10}
+
+\begin{DoxyItemize}
+\item O quesito A2.\+1 é implementado na classe \mbox{\hyperlink{class_sistema}{Sistema}}, no método {\bfseries{disconnect()}} (linha 89 em sistema.\+cpp); 
+\end{DoxyItemize}\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md11}{}\doxysubsection{A2.\+2 -\/ Criar servidores (nome)}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md11}
+
+\begin{DoxyItemize}
+\item O quesito A2.\+2 é implementado na classe \mbox{\hyperlink{class_sistema}{Sistema}}, no método {\bfseries{create-\/server()}} (linha 99 em sistema.\+cpp); 
+\end{DoxyItemize}\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md12}{}\doxysubsection{A2.\+3 -\/ Mudar a descrição do servidor}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md12}
+
+\begin{DoxyItemize}
+\item O quesito A2.\+3 é implementado na classe \mbox{\hyperlink{class_sistema}{Sistema}}, no método {\bfseries{set-\/server-\/desc()}} (linha 120 em sistema.\+cpp); 
+\end{DoxyItemize}\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md13}{}\doxysubsection{A2.\+4 -\/ Setar código de convite para o servidor}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md13}
+
+\begin{DoxyItemize}
+\item O quesito A2.\+4 é implementado na classe \mbox{\hyperlink{class_sistema}{Sistema}}, no método {\bfseries{set-\/server-\/desc()}} (linha 136 em sistema.\+cpp); 
+\end{DoxyItemize}\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md14}{}\doxysubsection{A2.\+5 -\/ Listar servidores}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md14}
+
+\begin{DoxyItemize}
+\item O quesito A2.\+5 é implementado na classe \mbox{\hyperlink{class_sistema}{Sistema}}, no método {\bfseries{list-\/servers()}} (linha 166 em sistema.\+cpp); 
+\end{DoxyItemize}\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md15}{}\doxysubsection{A2.\+6 -\/ Remover servidor}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md15}
+
+\begin{DoxyItemize}
+\item O quesito A2.\+6 é implementado na classe \mbox{\hyperlink{class_sistema}{Sistema}}, no método {\bfseries{remove-\/server()}} (linha 177 em sistema.\+cpp); 
+\end{DoxyItemize}\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md16}{}\doxysubsection{A2.\+7 -\/ Entrar em um servidor}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md16}
+
+\begin{DoxyItemize}
+\item O quesito A2.\+7 é implementado na classe \mbox{\hyperlink{class_sistema}{Sistema}}, no método {\bfseries{enter-\/server()}} (linha 204 em sistema.\+cpp); 
+\end{DoxyItemize}\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md17}{}\doxysubsection{A2.\+8 -\/ Sair do servidor}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md17}
+
+\begin{DoxyItemize}
+\item O quesito A2.\+8 é implementado na classe \mbox{\hyperlink{class_sistema}{Sistema}}, no método {\bfseries{leave-\/server()}} (linha 249 em sistema.\+cpp); 
+\end{DoxyItemize}\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md18}{}\doxysubsection{A2.\+9 -\/ Listar pessoas no servidor}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md18}
+
+\begin{DoxyItemize}
+\item O quesito A2.\+9 é implementado na classe \mbox{\hyperlink{class_sistema}{Sistema}}, no método {\bfseries{list-\/participants()}} (linha 259 em sistema.\+cpp);
+\end{DoxyItemize}\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md19}{}\doxysection{Exemplos de uso}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md19}
+\hypertarget{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md20}{}\doxysubsubsection{1 -\/ Criando 2 usuários, depois logando no usuário 1 e criando um servidor. Em seguida, acessando o servidor e criando uma descrição e um código convite. Após isso, desconectar do usuário 1 e logar com o usuário 2, entrar no servidor usando o código convite e listar participantes e servidores.}\label{md__c___users_cairo__documents__cairo__u_f_r_n_2021_1__l_p1__p_r_o_j_e_t_o_s__p_r_o_j_e_t_o_3__p877c296f5d57f59b7d0079f583f42574_autotoc_md20}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{create-\/user usuario@email.com senha Fulano de Tal}
+\DoxyCodeLine{create-\/user usuario2@email.com senha2 Ciclano de Tal}
+\DoxyCodeLine{login usuario@email.com senha}
+\DoxyCodeLine{create-\/server Servidor1}
+\DoxyCodeLine{enter-\/server Servidor1}
+\DoxyCodeLine{set-\/server-\/desc Um servidor do Concordo}
+\DoxyCodeLine{set-\/server-\/invite-\/code Servidor1 codigoParaServidor1}
+\DoxyCodeLine{disconnect}
+\DoxyCodeLine{login usuario2@email.com senha2}
+\DoxyCodeLine{enter-\/server Servidor1 codigoParaServidor1}
+\DoxyCodeLine{list-\/participants}
+\DoxyCodeLine{list-\/servers}
+
+\end{DoxyCode}
+ 

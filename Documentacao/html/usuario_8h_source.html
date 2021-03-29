@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Concordo: Código-Fonte de C:/Users/cairo/Documents/Cairo/UFRN/2021.1/LP1/PROJETOS/PROJETO 3/PROJETO 3 NOVO/atividade-3-cairoaraujo/usuario.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Concordo
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Um elegante clone do Discord.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Busca','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">C:/Users/cairo/Documents/Cairo/UFRN/2021.1/LP1/PROJETOS/PROJETO 3/PROJETO 3 NOVO/atividade-3-cairoaraujo/usuario.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef USUARIO_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define USUARIO_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_usuario.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_usuario.html">Usuario</a>{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        std::string nomeUsuario;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        std::string emailUsuario;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        std::string senhaUsuario;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_usuario.html#a0b3541b12f5306d6260ba1d63c64f78b">   29</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_usuario.html#a0b3541b12f5306d6260ba1d63c64f78b">idUsuario</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="class_usuario.html#aa2a65cd8436892a4eedea35f1fdc2253">Usuario</a>(std::string emailUsuario, std::string senhaUsuario, std::string nomeUsuario);</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_usuario.html#ab4096b0b8300ecb47b10c555fb09c997">   41</a></span>&#160;        <a class="code" href="class_usuario.html#ab4096b0b8300ecb47b10c555fb09c997">~Usuario</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        std::string <a class="code" href="class_usuario.html#ae24529edad2b302f140137b445053022">getUsuario</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        std::string <a class="code" href="class_usuario.html#a3acda6589935fbba258896baddd98fb8">getEmail</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        std::string <a class="code" href="class_usuario.html#ac7beed1209b2e8aa72a5ae0567f65f07">getSenha</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_usuario.html#af72cadb2cfa815ef3318f2544d1df4ef">getId</a>();   </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_usuario_html"><div class="ttname"><a href="class_usuario.html">Usuario</a></div><div class="ttdoc">Classe que contempla os métodos do usuário, como construtores, getters e setters.</div><div class="ttdef"><b>Definition:</b> usuario.h:10</div></div>
+<div class="ttc" id="aclass_usuario_html_a0b3541b12f5306d6260ba1d63c64f78b"><div class="ttname"><a href="class_usuario.html#a0b3541b12f5306d6260ba1d63c64f78b">Usuario::idUsuario</a></div><div class="ttdeci">int idUsuario</div><div class="ttdoc">armazena o ID de usuário. Começa a partir do número 1.</div><div class="ttdef"><b>Definition:</b> usuario.h:29</div></div>
+<div class="ttc" id="aclass_usuario_html_a3acda6589935fbba258896baddd98fb8"><div class="ttname"><a href="class_usuario.html#a3acda6589935fbba258896baddd98fb8">Usuario::getEmail</a></div><div class="ttdeci">std::string getEmail()</div><div class="ttdoc">método get que retorna o email do usuário.</div><div class="ttdef"><b>Definition:</b> usuario.cpp:23</div></div>
+<div class="ttc" id="aclass_usuario_html_aa2a65cd8436892a4eedea35f1fdc2253"><div class="ttname"><a href="class_usuario.html#aa2a65cd8436892a4eedea35f1fdc2253">Usuario::Usuario</a></div><div class="ttdeci">Usuario(std::string emailUsuario, std::string senhaUsuario, std::string nomeUsuario)</div><div class="ttdoc">Método construtor da classe.</div><div class="ttdef"><b>Definition:</b> usuario.cpp:9</div></div>
+<div class="ttc" id="aclass_usuario_html_ab4096b0b8300ecb47b10c555fb09c997"><div class="ttname"><a href="class_usuario.html#ab4096b0b8300ecb47b10c555fb09c997">Usuario::~Usuario</a></div><div class="ttdeci">~Usuario()</div><div class="ttdoc">Método destrutor da classe.</div></div>
+<div class="ttc" id="aclass_usuario_html_ac7beed1209b2e8aa72a5ae0567f65f07"><div class="ttname"><a href="class_usuario.html#ac7beed1209b2e8aa72a5ae0567f65f07">Usuario::getSenha</a></div><div class="ttdeci">std::string getSenha()</div><div class="ttdoc">método get que retorna a senha do usuário.</div><div class="ttdef"><b>Definition:</b> usuario.cpp:26</div></div>
+<div class="ttc" id="aclass_usuario_html_ae24529edad2b302f140137b445053022"><div class="ttname"><a href="class_usuario.html#ae24529edad2b302f140137b445053022">Usuario::getUsuario</a></div><div class="ttdeci">std::string getUsuario()</div><div class="ttdoc">método get que retorna o nome do usuário.</div><div class="ttdef"><b>Definition:</b> usuario.cpp:20</div></div>
+<div class="ttc" id="aclass_usuario_html_af72cadb2cfa815ef3318f2544d1df4ef"><div class="ttname"><a href="class_usuario.html#af72cadb2cfa815ef3318f2544d1df4ef">Usuario::getId</a></div><div class="ttdeci">int getId()</div><div class="ttdoc">método get que retorna o ID do usuário.</div><div class="ttdef"><b>Definition:</b> usuario.cpp:30</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,264 @@
+\hypertarget{class_sistema}{}\doxysection{Referência da Classe Sistema}
+\label{class_sistema}\index{Sistema@{Sistema}}
+
+
+Classe onde se concentra todas as operações do Concordo.  
+
+
+
+
+{\ttfamily \#include $<$sistema.\+h$>$}
+
+\doxysubsection*{Membros Públicos}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_sistema_a8be98649e0b4b7bf3bbc24c4e8b1a434}{quit}} ()
+\item 
+string \mbox{\hyperlink{class_sistema_a2debdfb0a127b261ae2587c20fb9db39}{create\+\_\+user}} (const string email, const string senha, const string nome)
+\begin{DoxyCompactList}\small\item\em Método para criação de um novo usuário. Caso o usuário não informe algum dos parâmetros, o mesmo ficará vazio, porém o cadastro ainda funcionará. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_sistema_a350e46f700f1347b63ef61a387745c20}{login}} (const string email, const string senha)
+\begin{DoxyCompactList}\small\item\em Método que realiza o login de usuário no Concordo. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_sistema_a9db7d3684ce0b3d5f379e8b7d3264a72}{disconnect}} ()
+\begin{DoxyCompactList}\small\item\em Método que realiza a desconexão do atual usuário. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_sistema_a08756fd767f89436ec2289664e864509}{create\+\_\+server}} (const string nome)
+\begin{DoxyCompactList}\small\item\em Método que realiza a criação de um novo servidor. É preciso estar logado com algum usuário antes. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_sistema_a08c7cc135cd5dc600481cb70318e0a17}{set\+\_\+server\+\_\+desc}} (const string nome, const string descricao)
+\begin{DoxyCompactList}\small\item\em Método que realiza a criação de uma descrição para o servidor informado. Aceita espaços. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_sistema_a7796921f3592246ecf961ec660021075}{set\+\_\+server\+\_\+invite\+\_\+code}} (const string nome, const string codigo)
+\begin{DoxyCompactList}\small\item\em Método que realiza a criação de um código convite para o servidor informado. Para isso, {\bfseries{o usuário logado deve ser o dono do servidor}}. Não aceita espaços. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sistema_ad1d910015e11c905a8b0bf2c1fa96c65}\label{class_sistema_ad1d910015e11c905a8b0bf2c1fa96c65}} 
+string \mbox{\hyperlink{class_sistema_ad1d910015e11c905a8b0bf2c1fa96c65}{list\+\_\+servers}} ()
+\begin{DoxyCompactList}\small\item\em Método que realiza a impressão de todos os servidores existentes no Concordo. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_sistema_aa86498350d9f6d13739d1b2a387023e8}{remove\+\_\+server}} (const string nome)
+\begin{DoxyCompactList}\small\item\em Método que realiza a remoção de um servidor. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_sistema_aa4dfc4573218956d99d44d831298df1f}{enter\+\_\+server}} (const string nome, const string codigo)
+\begin{DoxyCompactList}\small\item\em Método que realiza a entrada do usuário logado ao servidor informado. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_sistema_ab0d7aae8d51186186deb5bb6c788e208}{leave\+\_\+server}} ()
+\begin{DoxyCompactList}\small\item\em Método que realiza a remoção do usuário logado ao servidor informado. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_sistema_a53922543e7f86c2c8c43e56cf6bc7d34}{list\+\_\+participants}} ()
+\begin{DoxyCompactList}\small\item\em Método que imprimirá a lista de participantes do servidor atual onde o usuário está conectado. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sistema_a7ff34c46eba9eafc89b842c2820d0a19}\label{class_sistema_a7ff34c46eba9eafc89b842c2820d0a19}} 
+string \mbox{\hyperlink{class_sistema_a7ff34c46eba9eafc89b842c2820d0a19}{list\+\_\+channels}} ()
+\begin{DoxyCompactList}\small\item\em Função ainda não implementada. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sistema_aad0a922172d39ed75c44e6b36fbbfd9d}\label{class_sistema_aad0a922172d39ed75c44e6b36fbbfd9d}} 
+string \mbox{\hyperlink{class_sistema_aad0a922172d39ed75c44e6b36fbbfd9d}{create\+\_\+channel}} (const string nome, const string tipo)
+\begin{DoxyCompactList}\small\item\em Função ainda não implementada. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sistema_abe2ae25d824f66957fb56909d602d97f}\label{class_sistema_abe2ae25d824f66957fb56909d602d97f}} 
+string \mbox{\hyperlink{class_sistema_abe2ae25d824f66957fb56909d602d97f}{enter\+\_\+channel}} (const string nome)
+\begin{DoxyCompactList}\small\item\em Função ainda não implementada. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sistema_a9169c746290f96e89285c70a120bd442}\label{class_sistema_a9169c746290f96e89285c70a120bd442}} 
+string \mbox{\hyperlink{class_sistema_a9169c746290f96e89285c70a120bd442}{leave\+\_\+channel}} ()
+\begin{DoxyCompactList}\small\item\em Função ainda não implementada. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sistema_acc2e30fc7e56b77d72bc92bf41eb79c5}\label{class_sistema_acc2e30fc7e56b77d72bc92bf41eb79c5}} 
+string \mbox{\hyperlink{class_sistema_acc2e30fc7e56b77d72bc92bf41eb79c5}{send\+\_\+message}} (const string mensagem)
+\begin{DoxyCompactList}\small\item\em Função ainda não implementada. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sistema_a123f2e72ac8cd3761e481bb920da8bb6}\label{class_sistema_a123f2e72ac8cd3761e481bb920da8bb6}} 
+string \mbox{\hyperlink{class_sistema_a123f2e72ac8cd3761e481bb920da8bb6}{list\+\_\+messages}} ()
+\begin{DoxyCompactList}\small\item\em Função ainda não implementada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Atributos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_sistema_a512819fde5a7ff5461b32672965933d7}\label{class_sistema_a512819fde5a7ff5461b32672965933d7}} 
+int {\bfseries usuario\+ID} = 0
+\item 
+\mbox{\Hypertarget{class_sistema_ae0dbcba9c929dcc241db1c0b9c0075a3}\label{class_sistema_ae0dbcba9c929dcc241db1c0b9c0075a3}} 
+int {\bfseries servidor\+ID} = 0
+\item 
+\mbox{\Hypertarget{class_sistema_af40d3271baa509172e52a51bdf1cc2c3}\label{class_sistema_af40d3271baa509172e52a51bdf1cc2c3}} 
+bool {\bfseries esta\+Conectado}
+\item 
+\mbox{\Hypertarget{class_sistema_aaa3ee4d889317c42c385d2f4548ce78f}\label{class_sistema_aaa3ee4d889317c42c385d2f4548ce78f}} 
+bool {\bfseries esta\+Logado} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Classe onde se concentra todas as operações do Concordo. 
+
+\doxysubsection{Funções membros}
+\mbox{\Hypertarget{class_sistema_a08756fd767f89436ec2289664e864509}\label{class_sistema_a08756fd767f89436ec2289664e864509}} 
+\index{Sistema@{Sistema}!create\_server@{create\_server}}
+\index{create\_server@{create\_server}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{create\_server()}{create\_server()}}
+{\footnotesize\ttfamily string Sistema\+::create\+\_\+server (\begin{DoxyParamCaption}\item[{const string}]{nome }\end{DoxyParamCaption})}
+
+
+
+Método que realiza a criação de um novo servidor. É preciso estar logado com algum usuário antes. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em nome} & Nome do servidor, sem espaços. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Caso haja usuário logado, retornará mensagem de sucesso, caso contrário, mensagem de erro. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sistema_a2debdfb0a127b261ae2587c20fb9db39}\label{class_sistema_a2debdfb0a127b261ae2587c20fb9db39}} 
+\index{Sistema@{Sistema}!create\_user@{create\_user}}
+\index{create\_user@{create\_user}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{create\_user()}{create\_user()}}
+{\footnotesize\ttfamily string Sistema\+::create\+\_\+user (\begin{DoxyParamCaption}\item[{const string}]{email,  }\item[{const string}]{senha,  }\item[{const string}]{nome }\end{DoxyParamCaption})}
+
+
+
+Método para criação de um novo usuário. Caso o usuário não informe algum dos parâmetros, o mesmo ficará vazio, porém o cadastro ainda funcionará. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em email} & Email do usuário, sem espaços. \\
+\hline
+{\em senha} & Senha do usuário. Aceita letras, símbolos e números, mas sem espaços. \\
+\hline
+{\em Nome} & Nome do usuário. Aceita espaços. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sistema_a9db7d3684ce0b3d5f379e8b7d3264a72}\label{class_sistema_a9db7d3684ce0b3d5f379e8b7d3264a72}} 
+\index{Sistema@{Sistema}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily string Sistema\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Método que realiza a desconexão do atual usuário. 
+
+\begin{DoxyReturn}{Retorna}
+Caso exista usuário logado, retornará mensagem de sucesso. Caso contrário, retornará mensagem de erro. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sistema_aa4dfc4573218956d99d44d831298df1f}\label{class_sistema_aa4dfc4573218956d99d44d831298df1f}} 
+\index{Sistema@{Sistema}!enter\_server@{enter\_server}}
+\index{enter\_server@{enter\_server}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{enter\_server()}{enter\_server()}}
+{\footnotesize\ttfamily string Sistema\+::enter\+\_\+server (\begin{DoxyParamCaption}\item[{const string}]{nome,  }\item[{const string}]{codigo = {\ttfamily \char`\"{}vazio\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Método que realiza a entrada do usuário logado ao servidor informado. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em nome} & Nome do \mbox{\hyperlink{class_servidor}{Servidor}} que deseja entrar. \\
+\hline
+{\em codigo} & Código convite do servidor. Caso não haja, deixar em branco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Caso encontre o \mbox{\hyperlink{class_servidor}{Servidor}} informado e o código informado esteja correto, retornará mensagem de sucesso. Caso contrário, retornará mensagem de erro. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sistema_ab0d7aae8d51186186deb5bb6c788e208}\label{class_sistema_ab0d7aae8d51186186deb5bb6c788e208}} 
+\index{Sistema@{Sistema}!leave\_server@{leave\_server}}
+\index{leave\_server@{leave\_server}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{leave\_server()}{leave\_server()}}
+{\footnotesize\ttfamily string Sistema\+::leave\+\_\+server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Método que realiza a remoção do usuário logado ao servidor informado. 
+
+\begin{DoxyReturn}{Retorna}
+Caso o usuário esteja em algum servidor, retornará mensagem de sucesso. Caso contrário, retornará mensagem de erro. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sistema_a53922543e7f86c2c8c43e56cf6bc7d34}\label{class_sistema_a53922543e7f86c2c8c43e56cf6bc7d34}} 
+\index{Sistema@{Sistema}!list\_participants@{list\_participants}}
+\index{list\_participants@{list\_participants}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{list\_participants()}{list\_participants()}}
+{\footnotesize\ttfamily string Sistema\+::list\+\_\+participants (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Método que imprimirá a lista de participantes do servidor atual onde o usuário está conectado. 
+
+\begin{DoxyReturn}{Retorna}
+Lista de participantes do servidor. Se não houver participantes, imprimirá vazio. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sistema_a350e46f700f1347b63ef61a387745c20}\label{class_sistema_a350e46f700f1347b63ef61a387745c20}} 
+\index{Sistema@{Sistema}!login@{login}}
+\index{login@{login}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily string Sistema\+::login (\begin{DoxyParamCaption}\item[{const string}]{email,  }\item[{const string}]{senha }\end{DoxyParamCaption})}
+
+
+
+Método que realiza o login de usuário no Concordo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em email} & Email do usuário, sem espaços. \\
+\hline
+{\em senha} & Senha do usuário. Aceita letras, símbolos e números, mas sem espaços. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Caso o usuário não exista, o login retornará erro. Caso contrário, o usuário entrará no Concordo. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sistema_a8be98649e0b4b7bf3bbc24c4e8b1a434}\label{class_sistema_a8be98649e0b4b7bf3bbc24c4e8b1a434}} 
+\index{Sistema@{Sistema}!quit@{quit}}
+\index{quit@{quit}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{quit()}{quit()}}
+{\footnotesize\ttfamily string Sistema\+::quit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sairá imediatamente do Concordo. \mbox{\Hypertarget{class_sistema_aa86498350d9f6d13739d1b2a387023e8}\label{class_sistema_aa86498350d9f6d13739d1b2a387023e8}} 
+\index{Sistema@{Sistema}!remove\_server@{remove\_server}}
+\index{remove\_server@{remove\_server}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{remove\_server()}{remove\_server()}}
+{\footnotesize\ttfamily string Sistema\+::remove\+\_\+server (\begin{DoxyParamCaption}\item[{const string}]{nome }\end{DoxyParamCaption})}
+
+
+
+Método que realiza a remoção de um servidor. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em nome} & Nome do \mbox{\hyperlink{class_servidor}{Servidor}} que deseja-\/se excluir. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Caso encontre o \mbox{\hyperlink{class_servidor}{Servidor}} informado, retornará mensagem de sucesso. Caso contrário, retornará mensagem de erro. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sistema_a08c7cc135cd5dc600481cb70318e0a17}\label{class_sistema_a08c7cc135cd5dc600481cb70318e0a17}} 
+\index{Sistema@{Sistema}!set\_server\_desc@{set\_server\_desc}}
+\index{set\_server\_desc@{set\_server\_desc}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{set\_server\_desc()}{set\_server\_desc()}}
+{\footnotesize\ttfamily string Sistema\+::set\+\_\+server\+\_\+desc (\begin{DoxyParamCaption}\item[{const string}]{nome,  }\item[{const string}]{descricao }\end{DoxyParamCaption})}
+
+
+
+Método que realiza a criação de uma descrição para o servidor informado. Aceita espaços. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em nome} & Nome do \mbox{\hyperlink{class_servidor}{Servidor}} que deseja adicionar a descrição, sem espaços. \\
+\hline
+{\em descricao} & Descrição desejada para o \mbox{\hyperlink{class_servidor}{Servidor}}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Caso encontre o \mbox{\hyperlink{class_servidor}{Servidor}} informado, retornará mensagem de sucesso. Caso contrário, retornará mensagem de erro. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sistema_a7796921f3592246ecf961ec660021075}\label{class_sistema_a7796921f3592246ecf961ec660021075}} 
+\index{Sistema@{Sistema}!set\_server\_invite\_code@{set\_server\_invite\_code}}
+\index{set\_server\_invite\_code@{set\_server\_invite\_code}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{set\_server\_invite\_code()}{set\_server\_invite\_code()}}
+{\footnotesize\ttfamily string Sistema\+::set\+\_\+server\+\_\+invite\+\_\+code (\begin{DoxyParamCaption}\item[{const string}]{nome,  }\item[{const string}]{codigo }\end{DoxyParamCaption})}
+
+
+
+Método que realiza a criação de um código convite para o servidor informado. Para isso, {\bfseries{o usuário logado deve ser o dono do servidor}}. Não aceita espaços. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em nome} & Nome do \mbox{\hyperlink{class_servidor}{Servidor}} que deseja adicionar o código convite, sem espaços. \\
+\hline
+{\em codigo} & Código convite que deseja adicionar ao servidor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Caso encontre o \mbox{\hyperlink{class_servidor}{Servidor}} informado, retornará mensagem de sucesso. Caso contrário, retornará mensagem de erro. 
+\end{DoxyReturn}
+
+
+A documentação para essa classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cairo/\+Documents/\+Cairo/\+UFRN/2021.\+1/\+LP1/\+PROJETOS/\+PROJETO 3/\+PROJETO 3 NOVO/atividade-\/3-\/cairoaraujo/sistema.\+h\item 
+C\+:/\+Users/cairo/\+Documents/\+Cairo/\+UFRN/2021.\+1/\+LP1/\+PROJETOS/\+PROJETO 3/\+PROJETO 3 NOVO/atividade-\/3-\/cairoaraujo/sistema.\+cpp\end{DoxyCompactItemize}
