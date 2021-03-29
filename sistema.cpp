@@ -167,7 +167,7 @@ string Sistema::list_servers() {
   cout<<"Imprimindo lista de servidores..."<<endl;
   cout<<"\n";
   for(int u = 0; u < vectorServidores.size(); u++){
-    cout<<vectorServidores[u]->getNomeServidor()<<" - descricao: "<<vectorServidores[u]->getDescricaoServidor()<<endl;
+    cout<<" - "<<vectorServidores[u]->getNomeServidor()<<" - descricao: "<<vectorServidores[u]->getDescricaoServidor()<<endl;
     cout<<"\n";
   }
 
@@ -275,7 +275,7 @@ string Sistema::list_participants() {
   }
   cout <<"Imprimindo participantes...\n";
   for (int i = 0; i < vectorServidores[aux]->vectorParticipantesIDs.size(); i++){
-    cout << vectorServidores[aux]->vectorNomeParticipantesServidor[i]<<endl;
+    cout <<" - "<< vectorServidores[aux]->vectorNomeParticipantesServidor[i]<<endl;
   }
   
   if(estaConectado)
