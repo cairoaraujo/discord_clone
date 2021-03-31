@@ -11,10 +11,19 @@ using namespace std;
 
 /* COMANDOS */
 
+/*
+A1.1 ok
+Bem, aqui era um bom ponto para vc destruir os elementos que estão nos vetores onde vc usou new.
+*/
+
 string Sistema::quit() {
   return "Saindo...";
 }
 
+/*
+A1.2 ok, 0.8
+Vou tirar pontos pelos erros de indentação!
+*/
 string Sistema::create_user (const string email, const string senha, const string nome) {
     bool emailJaUsado; //variável de controle para verificar se email ja foi usado ou não. Retorna true se sim.
 
@@ -56,6 +65,11 @@ string Sistema::create_user (const string email, const string senha, const strin
 }
 
 
+/*
+A1.3 ok
+Acho que vc entendeu depois, mas a ideia era o comando retornar alguma coisa para o executor imprimir.
+*/
+
 string Sistema::login(const string email, const string senha) {
   if(estaLogado == false){//verifica se já existe algum usuário logado no sistema. Se sim, impede de fazer um novo login
 
@@ -86,6 +100,10 @@ string Sistema::login(const string email, const string senha) {
   return "";
 }
 
+
+/*
+A2.1 Ok
+*/
 string Sistema::disconnect() {
   if (estaLogado == true){
     estaLogado = false;
@@ -96,6 +114,9 @@ string Sistema::disconnect() {
   }
 }
 
+/*
+A2.2 Ok!
+*/
 string Sistema::create_server(const string nome) {
   if (estaLogado == true){ //só poderá criar servidor se houver usuário logado
     servidorID++;
@@ -117,6 +138,10 @@ string Sistema::create_server(const string nome) {
   }
 }
 
+/*
+A2.3 Ok
+aqui é um bom ponto pra vc usar lambda
+*/
 string Sistema::set_server_desc(const string nome, const string descricao) {
   bool encontrouServidor = false;
   int aux;
@@ -135,6 +160,11 @@ string Sistema::set_server_desc(const string nome, const string descricao) {
     return "Erro ao mudar descricao do servidor: servidor nao encontrado!";
   }
 }
+
+/*
+A2.4 ok,
+outro bom lugar pra usar lambda
+*/
 
 string Sistema::set_server_invite_code(const string nome, const string codigo) {
   bool encontrouServidor;
@@ -166,6 +196,10 @@ string Sistema::set_server_invite_code(const string nome, const string codigo) {
   }
 }
 
+
+/*
+A2.5 ok
+*/
 string Sistema::list_servers() {
   cout<<"Imprimindo lista de servidores..."<<endl;
   cout<<"\n";
@@ -177,6 +211,10 @@ string Sistema::list_servers() {
   return "";
 }
 
+/*
+A2.6 0.5
+Acho que vc entendeu errado, o usuário só pode remover o servidor se ele for o dono, vc não testou isso. Vou considerar 50%
+*/
 string Sistema::remove_server(const string nome) {
   bool removeuServidor = false;
   //percorrerá o vectorServidores e irá verificar se o nome do servidor informado pelo usuário existe. Se sim, irá remover e em seguida ajustar o index dos servidores à direita do removido.
@@ -204,6 +242,10 @@ string Sistema::remove_server(const string nome) {
   }
 }
 
+
+/*
+A2.6 ok
+*/
 string Sistema::enter_server(const string nome, const string codigo= "vazio") {
 
   //O laço percorrerá o vector e irá verificar se o nome do servidor existe. Se existir, verificará se o código informado pelo usuário é o código-convite do servidor. Se sim, o usuário logado será adicionado ao vectorParticipantesIDs.
@@ -228,7 +270,7 @@ string Sistema::enter_server(const string nome, const string codigo= "vazio") {
           //armazena o nome do servidor que o usuário está conectado atualmente
           nomeServidorConectado = vectorServidores[u]->getNomeServidor();
           encontrouServidor = true;
-          estaConectado = true;
+          estaConectado = true; //já deveria estar true nesse ponto
           return "Usuario entrou no servidor.";
         }
         else{
@@ -249,6 +291,9 @@ string Sistema::enter_server(const string nome, const string codigo= "vazio") {
   }
 }
 
+/*
+A2.8 ok
+*/
 string Sistema::leave_server() {
   if(nomeServidorConectado != ""){//Isso significa que o usuário está conectado a algum servidor, pois o nome != de vazio
     nomeServidorConectado = "";
@@ -259,6 +304,9 @@ string Sistema::leave_server() {
   }
 }
 
+/*
+A2.9 ok
+*/
 string Sistema::list_participants() {
   int aux;
   if(nomeServidorConectado != ""){
@@ -267,7 +315,7 @@ string Sistema::list_participants() {
         aux = u;
       }
       else{
-        if(u == vectorServidores.size()){
+        if(u == vectorServidores.size()){ //essa condição nunca vai acontecert rsrsrs...
           return "erro ao imprimir participantes do servidor.";
         }
       }

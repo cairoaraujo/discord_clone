@@ -4,6 +4,11 @@
 #include <string>
 #include <iostream>
 
+
+/*
+Ok
+Muito boa documentação!
+*/
 /**
  * @author Cairo Araujo
 */

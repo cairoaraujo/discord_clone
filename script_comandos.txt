@@ -45,6 +45,7 @@ list-participants
 login renan@imd.ufrn.br senha
 create-server servidor-sinistro
 enter-server servidor-sinistro
+disconnect
 login julio@imd.ufrn.br senha
 enter-server servidor-sinistro
 login isaacfranco@imd.ufrn.br senhalegal
