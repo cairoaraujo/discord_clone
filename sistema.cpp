@@ -42,10 +42,10 @@ string Sistema::create_user (const string email, const string senha, const strin
         novoUsuario->idUsuario = usuarioID;
         vectorUsuarios.push_back(novoUsuario);
         emailJaUsado = false;
-            for (int u=0; u<vectorUsuarios.size();u++){
-      cout << vectorUsuarios[u]->getEmail()<<" - ID: ";
-      cout << vectorUsuarios[u]->idUsuario<<endl;
-    }
+        for (int u=0; u<vectorUsuarios.size();u++){
+          cout << vectorUsuarios[u]->getEmail()<<" - ID: ";
+          cout << vectorUsuarios[u]->idUsuario<<endl;
+        }
         return "Cadastro realizado com sucesso!";
 
       }
