@@ -1,6 +1,7 @@
 #include "sistema.h"
 #include "usuario.h"
 #include "servidor.h"
+#include "canal.h"
 #include <iostream>
 #include <sstream>
 #include <algorithm>
@@ -340,6 +341,26 @@ string Sistema::list_channels() {
 }
 
 string Sistema::create_channel(const string nome, const string tipo) {
+  int aux;
+  if(estaLogado){
+      if(nomeServidorConectado != ""){//Isso significa que o usuário está conectado a algum servidor, pois o nome != de vazio
+          for(int u = 0; u <vectorServidores.size();u++){
+              if (nomeServidorConectado == vectorServidores[u]->getNomeServidor()){
+                  aux = u;
+                  Canal  *novoCanal = new Canal(nome,tipo); //há a criação do objeto novoCanal de forma dinâmica
+                  vectorServidores[aux]->vectorCanalTexto.push_back(novoCanal->getNomeCanal());
+                  return "Canal criado com sucesso!"
+              }
+          }
+      }
+      else{ //Se o nome do server conectado for vazio, isso quer dizer que o usuário não está conectado a nenhum server.
+        return "Erro ao criar um canal! Voce não esta conectado a nenhum Servidor!";
+      }
+  }
+  else{
+    return "Erro ao criar canal!";
+  }
+  
   return "create_channel NÃO IMPLEMENTADO";
 }
 

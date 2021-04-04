@@ -43,9 +43,20 @@ class Servidor{
     */
     std::vector<std::string> vectorNomeParticipantesServidor;
     /**
+    * @brief Estrutura de dados Vector que armazena os canais de voz de determinado Servidor.
+    */
+    std::vector<std::string> vectorCanalVoz;
+    /**
+    * @brief Estrutura de dados Vector que armazena os canais de texto de determinado Servidor.
+    */
+    std::vector<std::string> vectorCanalTexto;
+
+    /**
     * @brief Atributo que guarda o ID do servidor.
     */
     int idServidor;
+
+
     /**
     * @brief Método construtor do Servidor
     * @param nomeServidor O nome do Servidor a ser criado, sem espaços.

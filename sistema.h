@@ -5,6 +5,7 @@
 #include <iostream>
 #include "usuario.h"
 #include "servidor.h"
+#include "canal.h"
 
 using namespace std;
 
