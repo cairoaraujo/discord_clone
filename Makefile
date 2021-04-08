@@ -12,10 +12,16 @@ usuario.o: usuario.cpp usuario.h
 servidor.o: servidor.cpp servidor.h
 	g++ servidor.cpp -c
 
-objects: sistema.o executor.o usuario.o servidor.o
+canalTexto.o: canalTexto.cpp canal.h
+	g++ canalTexto.cpp -c
+
+canalVoz.o: canalVoz.cpp canal.h
+	g++ canalVoz.cpp -c
+
+objects: sistema.o executor.o usuario.o servidor.o canalTexto.o canalVoz.o
 
 concordo: objects concordo.cpp
-	g++ sistema.o executor.o usuario.o servidor.o concordo.cpp -o concordo
+	g++ sistema.o executor.o usuario.o servidor.o canalTexto.o canalVoz.o concordo.cpp -o concordo
 
 clean:
 	rm *.o concordo

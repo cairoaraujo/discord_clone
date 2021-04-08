@@ -337,7 +337,26 @@ string Sistema::list_participants() {
 }
 
 string Sistema::list_channels() {
-  return "list_channels NÃO IMPLEMENTADO";
+  bool temCanal;
+  //primeiro, verificar se há servidores criados:
+  if(vectorServidores.size() == 0){
+    temCanal = false;
+    return "Nao ha servidores criados, assim como tambem nao ha canais!";
+  }
+  else{
+    for (int u = 0; u < vectorServidores.size(); u++){
+      cout<<"--------  CANAIS CRIADOS DE TEXTO DO SERVIDOR '"<<vectorServidores[u]->getNomeServidor()<<"': --------"<<endl;
+      for(int i = 0; i < vectorServidores[u]->vectorCanalTexto.size(); i++){
+        cout<<"  * "<<vectorServidores[u]->vectorCanalTexto[i]<<endl;
+      }
+      cout<<"----------  CANAIS CRIADOS DE VOZ DO SERVIDOR '"<<vectorServidores[u]->getNomeServidor()<<"': ----------"<<endl;
+      for(int i = 0; i < vectorServidores[u]->vectorCanalVoz.size(); i++){
+        cout<<"  * "<<vectorServidores[u]->vectorCanalVoz[i]<<endl;
+      }
+
+  }
+    return "\nTodos os canais imprimidos com sucesso!";
+  }
 }
 
 string Sistema::create_channel(const string nome, const string tipo) {
@@ -347,9 +366,23 @@ string Sistema::create_channel(const string nome, const string tipo) {
           for(int u = 0; u <vectorServidores.size();u++){
               if (nomeServidorConectado == vectorServidores[u]->getNomeServidor()){
                   aux = u;
-                  Canal  *novoCanal = new Canal(nome,tipo); //há a criação do objeto novoCanal de forma dinâmica
-                  vectorServidores[aux]->vectorCanalTexto.push_back(novoCanal->getNomeCanal());
-                  return "Canal criado com sucesso!"
+
+                  if(tipo == "texto"){
+
+                      Canal  *novoCanal = new CanalTexto(nome); //há a criação do objeto novoCanal de forma dinâmica
+                      vectorServidores[aux]->vectorCanalTexto.push_back(novoCanal->getNomeCanal());
+                      return "Canal criado com sucesso!";
+
+                  }
+                  else if(tipo == "voz"){
+                      Canal  *novoCanal = new CanalVoz(nome); //há a criação do objeto novoCanal de forma dinâmica
+                      vectorServidores[aux]->vectorCanalVoz.push_back(novoCanal->getNomeCanal());
+                      return "Canal criado com sucesso!";
+
+                  }
+                  else{
+                    return "Erro! O tipo do canal nao foi informado corretamente.";
+                  }
               }
           }
       }
