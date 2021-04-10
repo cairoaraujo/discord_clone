@@ -26,6 +26,14 @@ class Sistema {
     */
     vector<Servidor*> vectorServidores;
     /**
+     * @brief vector que armazena todos os CANAIS do Concordo.
+    */
+    vector<CanalTexto*> vectorCanaisTexto;
+        /**
+     * @brief vector que armazena todos os CANAIS do Concordo.
+    */
+    vector<CanalVoz*> vectorCanaisVoz;
+    /**
      * @brief Variável que armazena o nome do Usuario logado atualmente.
     */
     string nomeUsuarioLogado;

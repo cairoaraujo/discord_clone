@@ -45,11 +45,11 @@ class Servidor{
     /**
     * @brief Estrutura de dados Vector que armazena os canais de voz de determinado Servidor.
     */
-    std::vector<std::string> vectorCanalVoz;
+    //std::vector<std::string> vectorCanalVoz;
     /**
     * @brief Estrutura de dados Vector que armazena os canais de texto de determinado Servidor.
     */
-    std::vector<std::string> vectorCanalTexto;
+    //std::vector<std::string> vectorCanalTexto;
 
     /**
     * @brief Atributo que guarda o ID do servidor.

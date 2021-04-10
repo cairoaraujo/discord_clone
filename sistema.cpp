@@ -337,55 +337,66 @@ string Sistema::list_participants() {
 }
 
 string Sistema::list_channels() {
-  bool temCanal;
-  //primeiro, verificar se há servidores criados:
-  if(vectorServidores.size() == 0){
-    temCanal = false;
-    return "Nao ha servidores criados, assim como tambem nao ha canais!";
-  }
-  else{
-    for (int u = 0; u < vectorServidores.size(); u++){
-      cout<<"--------  CANAIS CRIADOS DE TEXTO DO SERVIDOR '"<<vectorServidores[u]->getNomeServidor()<<"': --------"<<endl;
-      for(int i = 0; i < vectorServidores[u]->vectorCanalTexto.size(); i++){
-        cout<<"  * "<<vectorServidores[u]->vectorCanalTexto[i]<<endl;
-      }
-      cout<<"----------  CANAIS CRIADOS DE VOZ DO SERVIDOR '"<<vectorServidores[u]->getNomeServidor()<<"': ----------"<<endl;
-      for(int i = 0; i < vectorServidores[u]->vectorCanalVoz.size(); i++){
-        cout<<"  * "<<vectorServidores[u]->vectorCanalVoz[i]<<endl;
-      }
+  cout << "----------- IMPRIMINDO CANAIS DE VOZ: -----------"<<endl;
+  for (int u = 0; u < vectorCanaisVoz.size(); u++){
+    if(vectorCanaisVoz[u]->nomeServidorDono == nomeServidorConectado){
+      cout <<"  *"<<vectorCanaisVoz[u]->getNomeCanal()<<endl;
+      cout << "SERVIDOR DONO: "<< vectorCanaisVoz[u]->nomeServidorDono<<endl;
+    }
 
   }
-    return "\nTodos os canais imprimidos com sucesso!";
+  cout << "---------- IMPRIMINDO CANAIS DE TEXTO: ----------"<<endl;
+  for (int u = 0; u < vectorCanaisTexto.size(); u++){
+    if(vectorCanaisTexto[u]->nomeServidorDono == nomeServidorConectado){
+      cout <<"  *"<<vectorCanaisTexto[u]->getNomeCanal()<<endl;
+      cout << "SERVIDOR DONO: "<< vectorCanaisTexto[u]->nomeServidorDono<<endl;
+    }
   }
+
+  return "NAO IMPLEMENTADO";
 }
 
 string Sistema::create_channel(const string nome, const string tipo) {
-  int aux;
+  bool canalExiste;
   if(estaLogado){
       if(nomeServidorConectado != ""){//Isso significa que o usuário está conectado a algum servidor, pois o nome != de vazio
-          for(int u = 0; u <vectorServidores.size();u++){
-              if (nomeServidorConectado == vectorServidores[u]->getNomeServidor()){
-                  aux = u;
-
-                  if(tipo == "texto"){
-
-                      Canal  *novoCanal = new CanalTexto(nome); //há a criação do objeto novoCanal de forma dinâmica
-                      vectorServidores[aux]->vectorCanalTexto.push_back(novoCanal->getNomeCanal());
-                      return "Canal criado com sucesso!";
-
-                  }
-                  else if(tipo == "voz"){
-                      Canal  *novoCanal = new CanalVoz(nome); //há a criação do objeto novoCanal de forma dinâmica
-                      vectorServidores[aux]->vectorCanalVoz.push_back(novoCanal->getNomeCanal());
-                      return "Canal criado com sucesso!";
-
-                  }
-                  else{
-                    return "Erro! O tipo do canal nao foi informado corretamente.";
-                  }
-              }
+        if(tipo == "texto"){
+          for (int u = 0; u < vectorCanaisTexto.size(); u ++){//verificar se o nome do canal ja existe no servidor conectado
+            if(nome == vectorCanaisTexto[u]->getNomeCanal() && nomeServidorConectado == vectorCanaisTexto[u]->nomeServidorDono){
+              canalExiste = true;
+            }
           }
+          if(!canalExiste){
+            CanalTexto *novoCanal = new CanalTexto(nome);
+            vectorCanaisTexto.push_back(novoCanal);
+            novoCanal -> nomeServidorDono = nomeServidorConectado;
+            return "CANAL DE TEXTO CRIADO COM SUCESSO!";
+          }
+          else if(canalExiste){
+            return "Erro! o Servidor ja possui um canal de texto com esse nome!";
+          }
+
+        }
+        else if(tipo == "voz"){
+          for (int u = 0; u < vectorCanaisVoz.size(); u ++){//verificar se o nome do canal ja existe no servidor conectado
+            if(nome == vectorCanaisVoz[u]->getNomeCanal() && nomeServidorConectado == vectorCanaisVoz[u]->nomeServidorDono){
+              canalExiste = true;
+            }
+          }
+          if(!canalExiste){
+            CanalVoz *novoCanal = new CanalVoz(nome);
+            vectorCanaisVoz.push_back(novoCanal);
+            novoCanal -> nomeServidorDono = nomeServidorConectado;
+            return "CANAL DE TEXTO CRIADO COM SUCESSO!";
+          }
+          else if(canalExiste){
+            return "Erro! o Servidor ja possui um canal de voz com esse nome!";
+          }
+
+        }
+
       }
+
       else{ //Se o nome do server conectado for vazio, isso quer dizer que o usuário não está conectado a nenhum server.
         return "Erro ao criar um canal! Voce não esta conectado a nenhum Servidor!";
       }
@@ -398,6 +409,23 @@ string Sistema::create_channel(const string nome, const string tipo) {
 }
 
 string Sistema::enter_channel(const string nome) {
+  int aux;
+  if(nomeServidorConectado != ""){//significa que está conectado a algum servidor
+    for (int u = 0; u < vectorCanaisVoz.size(); u++){
+      if (nome == vectorCanaisVoz[u]->getNomeCanal()){
+        vectorCanaisVoz[u]->vectorParticipantesCanalVoz.push_back(nomeUsuarioLogado);
+        aux = u;
+        nomeCanalConectado = nome;
+        return "Usuario entrou no canal com sucesso!";
+      }
+    }
+  }
+  else{
+    return "voce nao esta conectado a nenhum servidor!";
+  }
+
+
+
   return "enter_channel NÃO IMPLEMENTADO";
 }
 
@@ -406,10 +434,21 @@ string Sistema::leave_channel() {
 }
 
 string Sistema::send_message(const string mensagem) {
+  if(nomeServidorConectado != ""){
+    if(nomeCanalConectado != ""){
+      for (int u = 0; u < vectorCanaisTexto.size(); u ++){
+        if(vectorCanaisTexto[u]->nomeServidorDono == nomeServidorConectado){
+          vectorCanaisTexto[u]->vectorMensagens.push_back(mensagem);
+          return "mensagem enviada com sucesso!";
+        }
+      }
+    }
+  }
   return "send_message NÃO IMPLEMENTADO";
 }
 
 string Sistema::list_messages() {
+ 
   return "list_messages NÃO IMPLEMENTADO";
 }
 
