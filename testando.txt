@@ -9,16 +9,16 @@ create-channel CANAL3 texto
 enter-channel CANAL1
 send-message oiii
 send-message tudo bem?
-send-message tchauuu
+send-message Adeus!
 list-messages
 disconnect
-create-user email2 senha Sebastiao
+create-user email2 senha Fulano
 login email2 senha
 enter-server SERVIDOR1
 enter-channel CANAL1
-send-message opaaa
-send-message tudo na paz?
+send-message Opaaa
+send-message Tudo na paz?
 list-messages
 enter-channel CANAL2
-send-message EAE GALERINHA DO CANAL 2!
+send-message Oi pessoal do Canal 2!
 list-messages

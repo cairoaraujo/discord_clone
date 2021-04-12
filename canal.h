@@ -15,33 +15,51 @@
 class Canal{
 
     protected:
+        /**
+        * @brief atributo que armazena o nome do canal.
+        */
         std::string nomeCanal;
+        /**
+        * @brief atributo que armazena o tipo do canal.
+        */
         std::string tipoCanal;
 
     public:
-        //construtor
+        /**
+        * @brief Construtor padrão
+        */        
         Canal(){
 
         };
-        //construtor parametrizado
+        /**
+        * @brief Construtor parametrizado. Recebe 2 parâmetros:
+        * @param nomeCanal
+        * @param tipoCanal
+        */
         Canal(std::string nomeCanal, std::string tipoCanal){
             this->nomeCanal = nomeCanal;
             this->tipoCanal = tipoCanal;
         };
 
-
+        /**
+        * @brief Método get que retorna o nome do canal.
+        */
         std::string getNomeCanal(){
             return nomeCanal;
         };
 
-
+        /**
+        * @brief variável que armazena em qual Servidor está o Canal
+        */
         std::string nomeServidorDono;
 
 
 
 
 };
-
+/**
+* @brief Classe derivada da Classe Canal. É responsável por atributos e métodos dos canais de texto.
+*/
 class CanalTexto : public Canal{
     public:
       //std::vector<std::string> vectorCanalTexto;
@@ -49,6 +67,9 @@ class CanalTexto : public Canal{
       CanalTexto(std::string nomeCanal);
 };
 
+/**
+* @brief Classe derivada da Classe Canal. É responsável por atributos e métodos dos canais de voz.
+*/
 class CanalVoz : public Canal{
     public:
       //std::vector<std::string> vectorCanalVoz;

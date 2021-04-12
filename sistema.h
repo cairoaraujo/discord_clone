@@ -135,27 +135,30 @@ class Sistema {
     */
     string list_participants();
     /**
-     * @brief Função ainda não implementada.
+     * @brief Função que imprime todos os Canais do servidor onde o usuário está conectado no momento.
     */
     string list_channels();
     /**
      * @brief Função ainda não implementada.
     */
+    /**
+     * @brief Função que cria um novo Canal, que pode ser de voz ou de texto. O usuário deve informar o **nome** para o canal e o seu tipo: **"texto"** ou **"voz"**, respectivamente. Podem existir Canais de tipos diferentes com o mesmo nome, porém não podem existir sendo do mesmo tipo.
+    */
     string create_channel(const string nome, const string tipo);
     /**
-     * @brief Função ainda não implementada.
+     * @brief Função que permite o acesso do canal pelo atual usuário. Essa função armazenará o nome do usuário logado e após isso permitirá as demais funções de Canal para o usuário que entrou. Recebe o **nome do canal** como parâmetro. **Se existirem canais de voz e texto com nomes iguais**, o usuário entrará nos dois simultaneamente.
     */
     string enter_channel(const string nome);
     /**
-     * @brief Função ainda não implementada.
+     * @brief Função que fará a saída do usuário do Canal atual.
     */
     string leave_channel();
     /**
-     * @brief Função ainda não implementada.
+     * @brief Função que enviará uma mensagem para o Canal conectado. Caso o canal seja do tipo **texto**, essa função armazenará a **mensagem**, o **nome do usuário** que enviou, junto com a **data e hora**, podendo ser vista através da função **lista-messages**. Se o canal for de **voz**, apenas armazenará a **última mensagem** enviada no canal.
     */
     string send_message(const string mensagem);
     /**
-     * @brief Função ainda não implementada.
+     * @brief função que listará todas as mensagens do Canal onde o usuário está conectado. Se for um canal de **texto**, mostrará todas as mensagens de texto. Caso o Canal seja de **voz**, mostrará apenas a última mensagem do Canal. E caso exista um canal de mesmo nome para **voz e texto**, imprimirá tanto as mensagens de texto quanto a última mensagem como voz.
     */
     string list_messages();
   };
