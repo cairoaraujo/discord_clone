@@ -38,7 +38,6 @@ class CanalTexto : public Canal{
       //std::vector<std::string> vectorCanalTexto;
       std::vector<std::string> vectorParticipantesCanalTexto;
       CanalTexto(std::string nomeCanal);
-      std::vector<std::string> vectorMensagens;
 };
 
 class CanalVoz : public Canal{

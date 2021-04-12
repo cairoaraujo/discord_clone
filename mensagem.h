@@ -17,15 +17,14 @@ class Mensagem{
         std::string conteudoMensagem;
         std::string nomeServidor;
         std::string nomeCanal;
+        std::string horario;
     public:
-        time_t now = time(0);
-        char* dt = ctime(&now);
         Mensagem(std::string donoMensagem, std::string conteudoMensagem, std::string nomeServidor, std::string nomeCanal){
             this -> donoMensagem = donoMensagem;
             this -> conteudoMensagem = conteudoMensagem;
             this -> nomeServidor = nomeServidor;
             this -> nomeCanal = nomeCanal;
-            this -> tempo = dt;
+            this -> horario = setHora();
         };
 
         std::string getMensagem(){
@@ -48,13 +47,16 @@ class Mensagem{
             return nomeCanal;
         }
 
-        std::string getTempo(){
-            return dt;
+        std::string setHora(){
+            time_t timer;
+            time(&timer);
+            return ctime(&timer);
         }
 
-        void setTempo(){
-
+        std::string getHorario(){
+            return horario;
         }
+
 };
 
 #endif

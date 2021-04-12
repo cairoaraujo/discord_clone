@@ -63,6 +63,7 @@ class Sistema {
     int servidorID = 0;
     bool estaConectado;
     bool estaLogado = false;
+    string getHora();
     /**
      * Sairá imediatamente do Concordo.
     */

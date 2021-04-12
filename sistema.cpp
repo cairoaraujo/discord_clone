@@ -7,7 +7,7 @@
 #include <sstream>
 #include <algorithm>
 #include <vector>
-
+#include <ctime>
 using namespace std;
 
 
@@ -343,6 +343,7 @@ string Sistema::list_channels() {
     if(vectorCanaisVoz[u]->nomeServidorDono == nomeServidorConectado){
       cout <<"  *"<<vectorCanaisVoz[u]->getNomeCanal()<<endl;
       cout << "SERVIDOR DONO: "<< vectorCanaisVoz[u]->nomeServidorDono<<endl;
+      cout << endl;
     }
 
   }
@@ -351,10 +352,11 @@ string Sistema::list_channels() {
     if(vectorCanaisTexto[u]->nomeServidorDono == nomeServidorConectado){
       cout <<"  *"<<vectorCanaisTexto[u]->getNomeCanal()<<endl;
       cout << "SERVIDOR DONO: "<< vectorCanaisTexto[u]->nomeServidorDono<<endl;
+      cout << endl;
     }
   }
 
-  return "Canais imprimidos com sucesso!";
+  return "Canais impressos com sucesso!";
 }
 
 string Sistema::create_channel(const string nome, const string tipo) {
@@ -395,6 +397,9 @@ string Sistema::create_channel(const string nome, const string tipo) {
           }
 
         }
+        else{
+          return "Erro na criacao do canal. Voce precisa informar o tipo! (texto ou voz)";
+        }
 
       }
 
@@ -409,6 +414,61 @@ string Sistema::create_channel(const string nome, const string tipo) {
   return " ";
 }
 
+/*string Sistema::enter_channel(const string nome) {
+  bool usuarioRepetido;
+  int aux;
+
+  if(nomeServidorConectado != ""){//significa que está conectado a algum servidor
+
+    //Percorrer no vector de Canal de voz
+    for (int u = 0; u < vectorCanaisVoz.size(); u++){
+      if(vectorCanaisVoz[u]->nomeServidorDono == nomeServidorConectado){
+
+        if (nome == vectorCanaisVoz[u]->getNomeCanal()){
+          for (int i = 0; i < vectorCanaisVoz[u]->vectorParticipantesCanalVoz.size()+1; i++){
+            cout<<"DEBUG: ENTROU NESSE FOR" <<endl;
+            if(nomeUsuarioLogado == vectorCanaisVoz[u]->vectorParticipantesCanalVoz[i]){
+              cout<<"ENTROU NESSE IF"<<endl;
+              usuarioRepetido = true;
+              aux = u;
+            }
+            else{
+              usuarioRepetido = false;
+            }
+          }
+        }
+      }
+    }
+    if(!usuarioRepetido){
+      vectorCanaisVoz[aux]->vectorParticipantesCanalVoz.push_back(nomeUsuarioLogado);
+      nomeCanalConectado = nome;
+      //cout << "DEBUG: " << vectorCanaisVoz[u]->vectorParticipantesCanalVoz[0]<<endl;
+      cout << "Usuario entrou no canal de voz com sucesso!" << endl;
+    }
+    else{
+      return "Usuario ja existe no canal de voz!";
+    }
+    //Percorrer no vector de Canal de Texto
+    for (int u = 0; u < vectorCanaisTexto.size(); u++){
+      if(vectorCanaisTexto[u]->nomeServidorDono == nomeServidorConectado){
+        if (nome == vectorCanaisTexto[u]->getNomeCanal()){
+          vectorCanaisTexto[u]->vectorParticipantesCanalTexto.push_back(nomeUsuarioLogado);
+          aux = u;
+          nomeCanalConectado = nome;
+          //cout << "DEBUG: " << vectorCanaisTexto[u]->vectorParticipantesCanalTexto[0]<<endl;
+          cout << "Usuario entrou no canal de texto com sucesso!"<<endl;
+        }
+      }
+    }
+  }
+  else{
+    return "voce nao esta conectado a nenhum servidor!";
+  }
+
+
+
+  return " ";
+}*/
 string Sistema::enter_channel(const string nome) {
   int aux;
   if(nomeServidorConectado != ""){//significa que está conectado a algum servidor
@@ -494,7 +554,7 @@ string Sistema::list_messages() {
       for (int u = 0; u < vectorMensagens.size(); u++){
         if(nomeServidorConectado == vectorMensagens[u]->getNomeServidor() && nomeCanalConectado == vectorMensagens[u]->getNomeCanal()){
         //Irá imprimir apenas as mensagens do canal e servidor conectado.
-          cout <<"  * 10/04/2020 - "<<vectorMensagens[u]->getDonoMensagem() <<": " << vectorMensagens[u]->getMensagem()<<endl;
+          cout <<"  * "<< vectorMensagens[u]->getHorario() << "    " <<vectorMensagens[u]->getDonoMensagem() <<": " << vectorMensagens[u]->getMensagem()<<endl<<endl;
 
         }
       }
@@ -507,8 +567,6 @@ string Sistema::list_messages() {
   cout << "-----------------------------------------------------"<<endl;
   return "Mensagens imprimidas com sucesso!";
 }
-
-
 
 
 /* IMPLEMENTAR MÉTODOS PARA OS COMANDOS RESTANTES */
