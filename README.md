@@ -63,7 +63,7 @@ O Concordo possui as seguintes funções:
 
 - **leave-channel:** Função que fará a saída do usuário do Canal atual.
 
--**list-channels:** Função que imprimirá todos os canais do Servidor conectado.
+- **list-channels:** Função que imprimirá todos os canais do Servidor conectado.
 
 - **send-message:** Função que enviará uma mensagem para o Canal conectado. Caso o canal seja do tipo **texto**, essa função armazenará a **mensagem**, o **nome do usuário** que enviou, junto com a **data e hora**, podendo ser vista através da função **lista-messages**. Se o canal for de **voz**, apenas armazenará a **última mensagem** enviada no canal.
 
@@ -96,6 +96,20 @@ O Concordo possui as seguintes funções:
 - O quesito A2.8 é implementado na classe Sistema, no método **leave-server()** (linha 249 em sistema.cpp);
 ### A2.9 - Listar pessoas no servidor
 - O quesito A2.9 é implementado na classe Sistema, no método **list-participants()** (linha 259 em sistema.cpp);
+
+### B1.1 - Listar canais do servidor (de áudio ou texto)
+- O quesito B1.1 é implementado na classe Sistema, no método **list-channels()** (linha 340 em sistema.cpp);
+### B1.2 - Criar um canal do servidor 
+- O quesito B1.2 é implementado na classe Sistema, no método **create-channel()** (linha 362 em sistema.cpp);
+## B1.3 - Entrar em um canal
+- O quesito B1.3 é implementado na classe Sistema, no método **enter-channel()** (linha 417 em sistema.cpp);
+## B1.4 - Sair do canal:
+- O quesito B1.4 é implementado na classe Sistema, no método **leave-channel()** (linha 450 em sistema.cpp);
+## B2.1 - Enviar mensagem para o canal
+- O quesito B2.1 é implementado na classe Sistema, no método **send-message()** (linha 476 em sistema.cpp);
+## B2.2 - Visualizar mensagens do canal:
+- O quesito B2.2 é implementado na classe Sistema, no método **list-messages()** (linha 502 em sistema.cpp);
+
 
 
 

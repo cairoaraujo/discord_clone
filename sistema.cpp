@@ -414,61 +414,6 @@ string Sistema::create_channel(const string nome, const string tipo) {
   return " ";
 }
 
-/*string Sistema::enter_channel(const string nome) {
-  bool usuarioRepetido;
-  int aux;
-
-  if(nomeServidorConectado != ""){//significa que está conectado a algum servidor
-
-    //Percorrer no vector de Canal de voz
-    for (int u = 0; u < vectorCanaisVoz.size(); u++){
-      if(vectorCanaisVoz[u]->nomeServidorDono == nomeServidorConectado){
-
-        if (nome == vectorCanaisVoz[u]->getNomeCanal()){
-          for (int i = 0; i < vectorCanaisVoz[u]->vectorParticipantesCanalVoz.size()+1; i++){
-            cout<<"DEBUG: ENTROU NESSE FOR" <<endl;
-            if(nomeUsuarioLogado == vectorCanaisVoz[u]->vectorParticipantesCanalVoz[i]){
-              cout<<"ENTROU NESSE IF"<<endl;
-              usuarioRepetido = true;
-              aux = u;
-            }
-            else{
-              usuarioRepetido = false;
-            }
-          }
-        }
-      }
-    }
-    if(!usuarioRepetido){
-      vectorCanaisVoz[aux]->vectorParticipantesCanalVoz.push_back(nomeUsuarioLogado);
-      nomeCanalConectado = nome;
-      //cout << "DEBUG: " << vectorCanaisVoz[u]->vectorParticipantesCanalVoz[0]<<endl;
-      cout << "Usuario entrou no canal de voz com sucesso!" << endl;
-    }
-    else{
-      return "Usuario ja existe no canal de voz!";
-    }
-    //Percorrer no vector de Canal de Texto
-    for (int u = 0; u < vectorCanaisTexto.size(); u++){
-      if(vectorCanaisTexto[u]->nomeServidorDono == nomeServidorConectado){
-        if (nome == vectorCanaisTexto[u]->getNomeCanal()){
-          vectorCanaisTexto[u]->vectorParticipantesCanalTexto.push_back(nomeUsuarioLogado);
-          aux = u;
-          nomeCanalConectado = nome;
-          //cout << "DEBUG: " << vectorCanaisTexto[u]->vectorParticipantesCanalTexto[0]<<endl;
-          cout << "Usuario entrou no canal de texto com sucesso!"<<endl;
-        }
-      }
-    }
-  }
-  else{
-    return "voce nao esta conectado a nenhum servidor!";
-  }
-
-
-
-  return " ";
-}*/
 string Sistema::enter_channel(const string nome) {
   int aux;
   if(nomeServidorConectado != ""){//significa que está conectado a algum servidor
