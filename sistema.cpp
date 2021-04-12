@@ -2,6 +2,7 @@
 #include "usuario.h"
 #include "servidor.h"
 #include "canal.h"
+#include "mensagem.h"
 #include <iostream>
 #include <sstream>
 #include <algorithm>
@@ -353,7 +354,7 @@ string Sistema::list_channels() {
     }
   }
 
-  return "NAO IMPLEMENTADO";
+  return "Canais imprimidos com sucesso!";
 }
 
 string Sistema::create_channel(const string nome, const string tipo) {
@@ -387,7 +388,7 @@ string Sistema::create_channel(const string nome, const string tipo) {
             CanalVoz *novoCanal = new CanalVoz(nome);
             vectorCanaisVoz.push_back(novoCanal);
             novoCanal -> nomeServidorDono = nomeServidorConectado;
-            return "CANAL DE TEXTO CRIADO COM SUCESSO!";
+            return "CANAL DE VOZ CRIADO COM SUCESSO!";
           }
           else if(canalExiste){
             return "Erro! o Servidor ja possui um canal de voz com esse nome!";
@@ -405,18 +406,30 @@ string Sistema::create_channel(const string nome, const string tipo) {
     return "Erro ao criar canal!";
   }
   
-  return "create_channel NÃO IMPLEMENTADO";
+  return " ";
 }
 
 string Sistema::enter_channel(const string nome) {
   int aux;
   if(nomeServidorConectado != ""){//significa que está conectado a algum servidor
+    //Percorrer no vector de Canal de voz
     for (int u = 0; u < vectorCanaisVoz.size(); u++){
       if (nome == vectorCanaisVoz[u]->getNomeCanal()){
         vectorCanaisVoz[u]->vectorParticipantesCanalVoz.push_back(nomeUsuarioLogado);
         aux = u;
         nomeCanalConectado = nome;
-        return "Usuario entrou no canal com sucesso!";
+        cout << "DEBUG: " << vectorCanaisVoz[u]->vectorParticipantesCanalVoz[0]<<endl;
+        cout << "Usuario entrou no canal de voz com sucesso!" << endl;
+      }
+    }
+    //Percorrer no vector de Canal de Texto
+    for (int u = 0; u < vectorCanaisTexto.size(); u++){
+      if (nome == vectorCanaisTexto[u]->getNomeCanal()){
+        vectorCanaisTexto[u]->vectorParticipantesCanalTexto.push_back(nomeUsuarioLogado);
+        aux = u;
+        nomeCanalConectado = nome;
+        cout << "DEBUG: " << vectorCanaisTexto[u]->vectorParticipantesCanalTexto[0]<<endl;
+        cout << "Usuario entrou no canal de texto com sucesso!"<<endl;
       }
     }
   }
@@ -426,19 +439,46 @@ string Sistema::enter_channel(const string nome) {
 
 
 
-  return "enter_channel NÃO IMPLEMENTADO";
+  return " ";
 }
 
 string Sistema::leave_channel() {
-  return "leave_channel NÃO IMPLEMENTADO";
+  bool saiuCanal;
+
+  if(nomeServidorConectado != ""){//verifica se o usuário está conectado a algum servidor.
+    cout<< "DEBUG: ENTROU NO 1 IF"<<endl;
+    for (int u=0; u < vectorCanaisVoz.size();u++){//Percorro o vector de canal de voz e confiro se o nome do usuario conectado está em algum canal de voz do servidor atual.
+      for (int i = 0; i < vectorCanaisVoz[u]->vectorParticipantesCanalVoz.size(); i ++){
+        if(nomeUsuarioLogado == vectorCanaisVoz[u]->vectorParticipantesCanalVoz[i] && nomeServidorConectado == vectorCanaisVoz[u]->nomeServidorDono){
+          vectorCanaisVoz.erase (vectorCanaisVoz.begin() + u);
+          saiuCanal = true;
+          cout << "DEBUG: USUARIO SAIU DO CANAL!"<< endl;
+          cout <<nomeServidorConectado<<endl;
+          cout << vectorCanaisVoz[u]->vectorParticipantesCanalVoz[i]<<endl;
+        }
+      }
+    }
+  }
+  else{
+    return "Nao eh possivel remover servidor estando desconectado.";
+  }
+
+  return "Usuario saiu do canal com sucesso!";
+
 }
 
 string Sistema::send_message(const string mensagem) {
-  if(nomeServidorConectado != ""){
+  if(nomeServidorConectado != ""){//reforçando verificações...
     if(nomeCanalConectado != ""){
       for (int u = 0; u < vectorCanaisTexto.size(); u ++){
         if(vectorCanaisTexto[u]->nomeServidorDono == nomeServidorConectado){
-          vectorCanaisTexto[u]->vectorMensagens.push_back(mensagem);
+          Mensagem  *novaMensagem = new Mensagem(nomeUsuarioLogado, mensagem, nomeServidorConectado, nomeCanalConectado);
+          //vectorMensagens[u]->getTempo();
+          vectorMensagens.push_back(novaMensagem);
+
+          //armazena o nome do usuario que enviou a mensagem
+
+
           return "mensagem enviada com sucesso!";
         }
       }
@@ -448,8 +488,24 @@ string Sistema::send_message(const string mensagem) {
 }
 
 string Sistema::list_messages() {
- 
-  return "list_messages NÃO IMPLEMENTADO";
+  if(nomeCanalConectado != ""){
+    if(!vectorMensagens.empty()){//Isso significa que há 1 ou mais mensagens
+      cout << "----- IMPRIMINDO MENSAGENS DO CANAL '"<<nomeCanalConectado<<"' : -----"<<endl;
+      for (int u = 0; u < vectorMensagens.size(); u++){
+        if(nomeServidorConectado == vectorMensagens[u]->getNomeServidor() && nomeCanalConectado == vectorMensagens[u]->getNomeCanal()){
+        //Irá imprimir apenas as mensagens do canal e servidor conectado.
+          cout <<"  * 10/04/2020 - "<<vectorMensagens[u]->getDonoMensagem() <<": " << vectorMensagens[u]->getMensagem()<<endl;
+
+        }
+      }
+    }
+    else{
+      return "Não existem mensagens!";
+
+    }
+  }
+  cout << "-----------------------------------------------------"<<endl;
+  return "Mensagens imprimidas com sucesso!";
 }
 
 

@@ -25,6 +25,7 @@ class Canal{
             return nomeCanal;
         };
 
+
         std::string nomeServidorDono;
 
 
@@ -34,7 +35,7 @@ class Canal{
 
 class CanalTexto : public Canal{
     public:
-      std::vector<std::string> vectorCanalTexto;
+      //std::vector<std::string> vectorCanalTexto;
       std::vector<std::string> vectorParticipantesCanalTexto;
       CanalTexto(std::string nomeCanal);
       std::vector<std::string> vectorMensagens;
@@ -42,14 +43,11 @@ class CanalTexto : public Canal{
 
 class CanalVoz : public Canal{
     public:
-      std::vector<std::string> vectorCanalVoz;
+      //std::vector<std::string> vectorCanalVoz;
       std::vector<std::string> vectorParticipantesCanalVoz;
       CanalVoz(std::string nomeCanal);
       std::string ultimaMensagem;
 
-      std::string getNomeCanal(){
-        return nomeCanal;
-      }
 };
 
 #endif

@@ -1,0 +1,24 @@
+create-user email senha cairoaraujo
+login email senha
+create-server SERVIDOR1
+enter-server SERVIDOR1
+create-channel CANAL1 voz
+create-channel CANAL1 texto
+create-channel CANAL2 texto
+create-channel CANAL3 texto
+enter-channel CANAL1
+send-message oiii
+send-message tudo bem?
+send-message tchauuu
+list-messages
+disconnect
+create-user email2 senha Sebastiao
+login email2 senha
+enter-server SERVIDOR1
+enter-channel CANAL1
+send-message opaaa
+send-message tudo na paz?
+list-messages
+enter-channel CANAL2
+send-message EAE GALERINHA DO CANAL 2!
+list-messages
