@@ -4,6 +4,14 @@
 #include <string>
 #include <iostream>
 
+
+/**
+ * @author Cairo Araujo
+*/
+/**
+* @brief Classe que contempla os métodos dos canais, tanto de voz quanto de texto. Possui atributos e métodos (construtores, getters e setters).
+*/
+
 class Canal{
 
     protected:
@@ -15,6 +23,7 @@ class Canal{
         Canal(){
 
         };
+        //construtor parametrizado
         Canal(std::string nomeCanal, std::string tipoCanal){
             this->nomeCanal = nomeCanal;
             this->tipoCanal = tipoCanal;
@@ -46,6 +55,7 @@ class CanalVoz : public Canal{
       std::vector<std::string> vectorParticipantesCanalVoz;
       CanalVoz(std::string nomeCanal);
       std::string ultimaMensagem;
+      std::string DonoMensagem;
 
 };
 

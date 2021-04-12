@@ -18,10 +18,13 @@ canalTexto.o: canalTexto.cpp canal.h
 canalVoz.o: canalVoz.cpp canal.h
 	g++ canalVoz.cpp -c
 
-objects: sistema.o executor.o usuario.o servidor.o canalTexto.o canalVoz.o
+mensagem.o:	mensagem.cpp mensagem.h
+	g++ mensagem.cpp -c
+
+objects: sistema.o executor.o usuario.o servidor.o canalTexto.o canalVoz.o mensagem.o
 
 concordo: objects concordo.cpp
-	g++ sistema.o executor.o usuario.o servidor.o canalTexto.o canalVoz.o concordo.cpp -o concordo
+	g++ sistema.o executor.o usuario.o servidor.o canalTexto.o canalVoz.o mensagem.o concordo.cpp -o concordo
 
 clean:
 	rm *.o concordo

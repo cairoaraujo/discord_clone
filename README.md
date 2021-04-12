@@ -55,6 +55,18 @@ O Concordo possui as seguintes funções:
 
 - **Set-server-invite-code:** Com usuário dono do servidor logado, essa função criará um código-convite de determinado servidor. Assim, a única forma de acessar o servidor é informando esse código. O usuário deve informar, respectivamente, o **nome do servidor** e o **código convite desejado.
 
+### Funções de Canal
+
+- **Create-channel:** Função que cria um novo Canal, que pode ser de voz ou de texto. O usuário deve informar o **nome** para o canal e o seu tipo: **"texto"** ou **"voz"**, respectivamente. Podem existir Canais de tipos diferentes com o mesmo nome, porém não podem existir sendo do mesmo tipo.
+
+- **enter-channel:** Função que permite o acesso do canal pelo atual usuário. Essa função armazenará o nome do usuário logado e após isso permitirá as demais funções de Canal para o usuário que entrou. Recebe o **nome do canal** como parâmetro.
+
+- **send-message:** Função que enviará uma mensagem para o Canal conectado. Caso o canal seja do tipo **texto**, essa função armazenará a **mensagem**, o **nome do usuário** que enviou, junto com a **data e hora**, podendo ser vista através da função **lista-messages**. Se o canal for de **voz**, apenas armazenará a **última mensagem** enviada no canal.
+
+- **leave-channel:** Função que fará a saída do usuário do Canal atual.
+
+- **list-messages:** função que listará todas as mensagens do Canal onde o usuário está conectado. Se for um canal de **texto**, mostrará todas as mensagens de texto. Caso o Canal seja de **voz**, mostrará apenas a última mensagem do Canal. E caso exista um canal de mesmo nome para **voz e texto**, imprimirá tanto as mensagens de texto quanto a última mensagem como voz.
+
 ## Implementações
 
 ### A1.1 - Sair do sistema

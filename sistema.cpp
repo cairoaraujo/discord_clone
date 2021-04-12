@@ -512,6 +512,7 @@ string Sistema::leave_channel() {
         if(nomeUsuarioLogado == vectorCanaisVoz[u]->vectorParticipantesCanalVoz[i] && nomeServidorConectado == vectorCanaisVoz[u]->nomeServidorDono){
           vectorCanaisVoz.erase (vectorCanaisVoz.begin() + u);
           saiuCanal = true;
+          nomeCanalConectado = "";
           cout << "DEBUG: USUARIO SAIU DO CANAL!"<< endl;
           cout <<nomeServidorConectado<<endl;
           cout << vectorCanaisVoz[u]->vectorParticipantesCanalVoz[i]<<endl;
@@ -533,24 +534,32 @@ string Sistema::send_message(const string mensagem) {
       for (int u = 0; u < vectorCanaisTexto.size(); u ++){
         if(vectorCanaisTexto[u]->nomeServidorDono == nomeServidorConectado){
           Mensagem  *novaMensagem = new Mensagem(nomeUsuarioLogado, mensagem, nomeServidorConectado, nomeCanalConectado);
-          //vectorMensagens[u]->getTempo();
           vectorMensagens.push_back(novaMensagem);
-
           //armazena o nome do usuario que enviou a mensagem
+          cout << "mensagem enviada com sucesso!"<< endl;
+          break;
 
-
-          return "mensagem enviada com sucesso!";
+        }
+      }
+      for (int i = 0; i < vectorCanaisVoz.size(); i++){
+        if(vectorCanaisVoz[i]->getNomeCanal() == nomeCanalConectado){
+          vectorCanaisVoz[i]->ultimaMensagem = mensagem;
+          vectorCanaisVoz[i]->DonoMensagem = nomeUsuarioLogado;
+          cout << "mensagem de voz enviada com sucesso!";
+          break;
         }
       }
     }
   }
-  return "send_message NÃO IMPLEMENTADO";
+  return "";
 }
 
 string Sistema::list_messages() {
   if(nomeCanalConectado != ""){
+
     if(!vectorMensagens.empty()){//Isso significa que há 1 ou mais mensagens
-      cout << "----- IMPRIMINDO MENSAGENS DO CANAL '"<<nomeCanalConectado<<"' : -----"<<endl;
+      cout << "\n-------------- '"<<nomeCanalConectado<<"' --------------"<<endl;
+      cout <<"### MENSAGENS DE TEXTO ###"<<endl;
       for (int u = 0; u < vectorMensagens.size(); u++){
         if(nomeServidorConectado == vectorMensagens[u]->getNomeServidor() && nomeCanalConectado == vectorMensagens[u]->getNomeCanal()){
         //Irá imprimir apenas as mensagens do canal e servidor conectado.
@@ -559,12 +568,21 @@ string Sistema::list_messages() {
         }
       }
     }
+    if(!vectorCanaisVoz.empty()){
+        for (int i = 0; i < vectorCanaisVoz.size(); i++){
+          if(vectorCanaisVoz[i]->getNomeCanal() == nomeCanalConectado){
+            cout << "### ULTIMA MENSAGEM DE VOZ: ###"<<endl;
+            cout<<"  * "<<vectorCanaisVoz[i]->DonoMensagem <<": " << vectorCanaisVoz[i]-> ultimaMensagem<<endl;
+          }
+        }
+    
+    }
     else{
       return "Não existem mensagens!";
 
     }
   }
-  cout << "-----------------------------------------------------"<<endl;
+  cout << "---------------------------------------"<<endl;
   return "Mensagens imprimidas com sucesso!";
 }
 
