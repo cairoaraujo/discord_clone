@@ -12,6 +12,11 @@
 * @brief Classe que contempla os métodos dos canais, tanto de voz quanto de texto. Possui atributos e métodos (construtores, getters e setters).
 */
 
+/*
+0.8
+vou tirar 20% pela desorganização das classes derivadas
+*/
+
 class Canal{
 
     protected:
@@ -57,8 +62,13 @@ class Canal{
 
 
 };
+
 /**
 * @brief Classe derivada da Classe Canal. É responsável por atributos e métodos dos canais de texto.
+*/
+/*
+0.8
+ok
 */
 class CanalTexto : public Canal{
     public:
@@ -69,6 +79,10 @@ class CanalTexto : public Canal{
 
 /**
 * @brief Classe derivada da Classe Canal. É responsável por atributos e métodos dos canais de voz.
+*/
+/*
+0.9
+ok
 */
 class CanalVoz : public Canal{
     public:
