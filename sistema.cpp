@@ -8,6 +8,8 @@
 #include <algorithm>
 #include <vector>
 #include <ctime>
+#include <fstream>
+
 using namespace std;
 
 
@@ -337,10 +339,6 @@ string Sistema::list_participants() {
     return "Erro ao imprimir!";
 }
 
-/*
-ok
-vc poderia delegar "Imprimir canais para o servidor"
-*/
 string Sistema::list_channels() {
   cout << "----------- IMPRIMINDO CANAIS DE VOZ: -----------"<<endl;
   for (int u = 0; u < vectorCanaisVoz.size(); u++){
@@ -363,10 +361,6 @@ string Sistema::list_channels() {
   return "Canais impressos com sucesso!";
 }
 
-/*
-ok
-aqui, praticamente todo o processamento deveria ser feito em servidor
-*/
 string Sistema::create_channel(const string nome, const string tipo) {
   bool canalExiste;
   if(estaLogado){
@@ -422,11 +416,6 @@ string Sistema::create_channel(const string nome, const string tipo) {
   return " ";
 }
 
-
-/*
-ok,
-nesse caso vc poderia delegar para o servidor a pergunta "existeCanal"
-*/
 string Sistema::enter_channel(const string nome) {
   int aux;
   if(nomeServidorConectado != ""){//significa que está conectado a algum servidor
@@ -460,15 +449,11 @@ string Sistema::enter_channel(const string nome) {
   return " ";
 }
 
-/*
-ok
-mais uma vez vc deveria delegar para "Canal" ou mesmo para "Servidor" a tarefa de remover o usuário do canal
-*/
 string Sistema::leave_channel() {
   bool saiuCanal;
 
   if(nomeServidorConectado != ""){//verifica se o usuário está conectado a algum servidor.
-    cout<< "DEBUG: ENTROU NO 1 IF"<<endl; //indeed...
+    cout<< "DEBUG: ENTROU NO 1 IF"<<endl;
     for (int u=0; u < vectorCanaisVoz.size();u++){//Percorro o vector de canal de voz e confiro se o nome do usuario conectado está em algum canal de voz do servidor atual.
       for (int i = 0; i < vectorCanaisVoz[u]->vectorParticipantesCanalVoz.size(); i ++){
         if(nomeUsuarioLogado == vectorCanaisVoz[u]->vectorParticipantesCanalVoz[i] && nomeServidorConectado == vectorCanaisVoz[u]->nomeServidorDono){
@@ -490,10 +475,6 @@ string Sistema::leave_channel() {
 
 }
 
-/*
-0,7
-vectorMensagens deveria ser da classe canal, vou remover 30% por isso, já que é um erro de design
-*/
 string Sistema::send_message(const string mensagem) {
   if(nomeServidorConectado != ""){//reforçando verificações...
     if(nomeCanalConectado != ""){
@@ -520,10 +501,6 @@ string Sistema::send_message(const string mensagem) {
   return "";
 }
 
-/*
-ok
-Vou considerar 100% já que o objetivo era imprimir, mas os vetores estão no lugar errado...
-*/
 string Sistema::list_messages() {
   if(nomeCanalConectado != ""){
 
@@ -554,6 +531,79 @@ string Sistema::list_messages() {
   }
   cout << "---------------------------------------"<<endl;
   return "Mensagens imprimidas com sucesso!";
+}
+
+string Sistema::save_users(){
+  ofstream arquivo_usuarios("usuarios.txt");
+  arquivo_usuarios << vectorUsuarios.size() << endl;
+  for (size_t i = 0; i < vectorUsuarios.size(); i++){
+    arquivo_usuarios << vectorUsuarios[i]->getId() << endl;
+    arquivo_usuarios << vectorUsuarios[i]->getUsuario() <<endl;
+    arquivo_usuarios << vectorUsuarios[i]->getEmail() <<endl;
+    arquivo_usuarios << vectorUsuarios[i]->getSenha() <<endl;
+  }
+
+  return "Usuarios gravavos com sucesso em : ./USUARIOS_SALVOS.txt";
+}
+
+
+
+string Sistema::save_servers(){
+  string canalAtual;
+  string servidorName;
+  ofstream arquivo_servidores("servidores.txt");
+  arquivo_servidores <<"TAMANHO: " << vectorServidores.size()<<endl;
+  cout << "NUMERO DE SERVIDORES:"<< vectorServidores.size();
+
+  for (int i = 0; vectorServidores.size(); i++){
+    if (vectorServidores.size() == i){
+      break;
+    }
+    cout<<"DEBUG: ENTROU "<<i<<endl;
+    arquivo_servidores <<"Id do Usuario Dono:" << vectorServidores[i]->getUsuarioDonoID()<<endl;
+    arquivo_servidores <<"Nome servidor: " << vectorServidores[i]->getNomeServidor()<<endl;
+    arquivo_servidores << "Descricao Servidor: " << vectorServidores[i]->getDescricaoServidor()<<endl;
+    arquivo_servidores << "Codigo convite " <<vectorServidores[i]->getCodigoConviteServidor()<<endl;
+    //falta numero de participantes do servidor
+
+    for (size_t c = 0; vectorCanaisTexto.size(); c++){
+      cout << "DEBUG1: ENTROU "<< c<<endl;
+      if(vectorCanaisTexto.size() == c){
+        break;
+      }
+      if (vectorCanaisTexto[c]->nomeServidorDono == vectorServidores[i]->getNomeServidor()){
+        servidorName = vectorServidores[i]->getNomeServidor();
+        arquivo_servidores<< "tamanho do canal texto: "<< vectorCanaisTexto.size()<<endl;
+        arquivo_servidores << "Nome do canal:"<< vectorCanaisTexto[c]->getNomeCanal()<<endl;
+         canalAtual= vectorCanaisTexto[c]->getNomeCanal();
+         cout << "CANAL ATUAL EH " <<canalAtual <<endl;
+      }
+
+
+      for(size_t a = 0; vectorMensagens.size(); a++){
+          cout << "DEBUG2: ENTROU "<< a<< "CANAL ATUAL NUMERO:" << canalAtual<< endl;
+          if (vectorMensagens.size() == a){
+            break;
+          }
+          if(vectorMensagens[c]->getNomeServidor() == vectorServidores[i]->getNomeServidor() && vectorMensagens[c]->getNomeCanal() == canalAtual){
+            arquivo_servidores <<"Dono mensagem:" << vectorMensagens[a]->getDonoMensagem()<<endl;
+            arquivo_servidores <<"hora: " << vectorMensagens[a]->getHorario();
+            arquivo_servidores << "mensagem: " << vectorMensagens[a]->getMensagem()<<endl;
+            arquivo_servidores << "-----------------------------------"<<endl;
+          }
+      }
+    }
+
+  }
+
+  return "Servidores gravados com sucesso em: ./servidores.txt";
+}
+
+string Sistema::save(){
+  save_servers();
+  save_users();
+  return "deu ceerto hehehe";
+
 }
 
 

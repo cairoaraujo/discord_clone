@@ -161,6 +161,12 @@ class Sistema {
      * @brief função que listará todas as mensagens do Canal onde o usuário está conectado. Se for um canal de **texto**, mostrará todas as mensagens de texto. Caso o Canal seja de **voz**, mostrará apenas a última mensagem do Canal. E caso exista um canal de mesmo nome para **voz e texto**, imprimirá tanto as mensagens de texto quanto a última mensagem como voz.
     */
     string list_messages();
+
+    string save_users();
+
+    string save_servers();
+
+    string save();
   };
 
   #endif

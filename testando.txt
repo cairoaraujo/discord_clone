@@ -1,5 +1,4 @@
 create-user email senha cairoaraujo
-create-user email2 senha Fulano
 login email senha
 create-server SERVIDOR1
 enter-server SERVIDOR1
@@ -8,17 +7,19 @@ create-channel CANAL1 texto
 create-channel CANAL2 texto
 create-channel CANAL3 texto
 enter-channel CANAL1
-send-message oiii
-send-message tudo bem?
-send-message Adeus!
+send-message MSG CANAL1
+send-message MSG CANAL1 (2)
+send-message MSG CANAL1 (3)
 list-messages
 disconnect
+create-user email2 senha Fulano
 login email2 senha
 enter-server SERVIDOR1
 enter-channel CANAL1
-send-message Opaaa
-send-message Tudo na paz?
+send-message MSG2 CANAL1
+send-message MSG2 CANAL1(2)
 list-messages
 enter-channel CANAL2
-send-message Oi pessoal do Canal 2!
+send-message MSG CANAL2
 list-messages
+save

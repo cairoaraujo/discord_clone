@@ -152,6 +152,18 @@ string Executor::processarLinha(string linha) {
     return sistema->list_messages();
   }
 
+  else if (nomeComando == "save-users"){
+    return sistema -> save_users();
+  }
+
+  else if (nomeComando == "save-servers"){
+    return sistema -> save_servers();
+  }
+
+  else if (nomeComando == "save"){
+    return sistema -> save();
+  }
+
   else {
     return "Comando não reconhecido [" + nomeComando + "]";
   }

@@ -9,10 +9,7 @@
 using namespace std;
 
 
-/*
-* ok, 0.8 
-* vou tirar pontos de indentação do Mensagem.cpp
-*/
+
 class Mensagem{
     private:
         /**
