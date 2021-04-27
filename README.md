@@ -110,11 +110,16 @@ O Concordo possui as seguintes funções:
 ## B2.2 - Visualizar mensagens do canal:
 - O quesito B2.2 é implementado na classe Sistema, no método **list-messages()** (linha 502 em sistema.cpp);
 
+<br>
+
+## C1 - Implementar Persistência dos dados em disco
+- O quesito C1.1 é implementado na classe Sistema, nos métodos **save-users(), save-servers() e save()** (linha 495 em sistema.cpp);
+
+## C2 - Implementar restauração dos dados do disco na inicialização do sistema
+- O quesito C1.1 é implementado na classe Sistema, no método **upload-users(), upload-servers() e upload()** (linha 566 em sistema.cpp);
 
 
-
-
-
+<br>
 
 ## Exemplos de uso
 

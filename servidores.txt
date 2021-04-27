@@ -1,32 +1,32 @@
-TAMANHO: 1
+1
 Id do Usuario Dono:1
-Nome servidor: SERVIDOR1
+SERVIDOR1
 Descricao Servidor: 
 Codigo convite 
 tamanho do canal texto: 3
 Nome do canal:CANAL1
 Dono mensagem:cairoaraujo
-hora: Sun Apr 25 21:26:20 2021
+hora: Mon Apr 26 22:58:46 2021
 mensagem: MSG CANAL1
 -----------------------------------
 Dono mensagem:cairoaraujo
-hora: Sun Apr 25 21:26:20 2021
+hora: Mon Apr 26 22:58:46 2021
 mensagem: MSG CANAL1 (2)
 -----------------------------------
 Dono mensagem:cairoaraujo
-hora: Sun Apr 25 21:26:20 2021
+hora: Mon Apr 26 22:58:46 2021
 mensagem: MSG CANAL1 (3)
 -----------------------------------
 Dono mensagem:Fulano
-hora: Sun Apr 25 21:26:20 2021
+hora: Mon Apr 26 22:58:46 2021
 mensagem: MSG2 CANAL1
 -----------------------------------
 Dono mensagem:Fulano
-hora: Sun Apr 25 21:26:20 2021
+hora: Mon Apr 26 22:58:46 2021
 mensagem: MSG2 CANAL1(2)
 -----------------------------------
 Dono mensagem:Fulano
-hora: Sun Apr 25 21:26:20 2021
+hora: Mon Apr 26 22:58:46 2021
 mensagem: MSG CANAL2
 -----------------------------------
 tamanho do canal texto: 3

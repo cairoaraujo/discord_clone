@@ -15,19 +15,12 @@ using namespace std;
 
 /* COMANDOS */
 
-/*
-A1.1 ok
-Bem, aqui era um bom ponto para vc destruir os elementos que estão nos vetores onde vc usou new.
-*/
 
 string Sistema::quit() {
   return "Saindo...";
 }
 
-/*
-A1.2 ok, 0.8
-Vou tirar pontos pelos erros de indentação!
-*/
+
 string Sistema::create_user (const string email, const string senha, const string nome) {
     bool emailJaUsado; //variável de controle para verificar se email ja foi usado ou não. Retorna true se sim.
 
@@ -69,11 +62,6 @@ string Sistema::create_user (const string email, const string senha, const strin
 }
 
 
-/*
-A1.3 ok
-Acho que vc entendeu depois, mas a ideia era o comando retornar alguma coisa para o executor imprimir.
-*/
-
 string Sistema::login(const string email, const string senha) {
   if(estaLogado == false){//verifica se já existe algum usuário logado no sistema. Se sim, impede de fazer um novo login
 
@@ -104,10 +92,6 @@ string Sistema::login(const string email, const string senha) {
   return "";
 }
 
-
-/*
-A2.1 Ok
-*/
 string Sistema::disconnect() {
   if (estaLogado == true){
     estaLogado = false;
@@ -118,9 +102,6 @@ string Sistema::disconnect() {
   }
 }
 
-/*
-A2.2 Ok!
-*/
 string Sistema::create_server(const string nome) {
   if (estaLogado == true){ //só poderá criar servidor se houver usuário logado
     servidorID++;
@@ -142,10 +123,6 @@ string Sistema::create_server(const string nome) {
   }
 }
 
-/*
-A2.3 Ok
-aqui é um bom ponto pra vc usar lambda
-*/
 string Sistema::set_server_desc(const string nome, const string descricao) {
   bool encontrouServidor = false;
   int aux;
@@ -165,10 +142,6 @@ string Sistema::set_server_desc(const string nome, const string descricao) {
   }
 }
 
-/*
-A2.4 ok,
-outro bom lugar pra usar lambda
-*/
 
 string Sistema::set_server_invite_code(const string nome, const string codigo) {
   bool encontrouServidor;
@@ -200,10 +173,6 @@ string Sistema::set_server_invite_code(const string nome, const string codigo) {
   }
 }
 
-
-/*
-A2.5 ok
-*/
 string Sistema::list_servers() {
   cout<<"Imprimindo lista de servidores..."<<endl;
   cout<<"\n";
@@ -215,10 +184,7 @@ string Sistema::list_servers() {
   return "";
 }
 
-/*
-A2.6 0.5
-Acho que vc entendeu errado, o usuário só pode remover o servidor se ele for o dono, vc não testou isso. Vou considerar 50%
-*/
+
 string Sistema::remove_server(const string nome) {
   bool removeuServidor = false;
   //percorrerá o vectorServidores e irá verificar se o nome do servidor informado pelo usuário existe. Se sim, irá remover e em seguida ajustar o index dos servidores à direita do removido.
@@ -247,9 +213,6 @@ string Sistema::remove_server(const string nome) {
 }
 
 
-/*
-A2.6 ok
-*/
 string Sistema::enter_server(const string nome, const string codigo= "vazio") {
 
   //O laço percorrerá o vector e irá verificar se o nome do servidor existe. Se existir, verificará se o código informado pelo usuário é o código-convite do servidor. Se sim, o usuário logado será adicionado ao vectorParticipantesIDs.
@@ -295,9 +258,7 @@ string Sistema::enter_server(const string nome, const string codigo= "vazio") {
   }
 }
 
-/*
-A2.8 ok
-*/
+
 string Sistema::leave_server() {
   if(nomeServidorConectado != ""){//Isso significa que o usuário está conectado a algum servidor, pois o nome != de vazio
     nomeServidorConectado = "";
@@ -308,9 +269,7 @@ string Sistema::leave_server() {
   }
 }
 
-/*
-A2.9 ok
-*/
+
 string Sistema::list_participants() {
   int aux;
   if(nomeServidorConectado != ""){
@@ -548,12 +507,12 @@ string Sistema::save_users(){
 
 
 
-string Sistema::save_servers(){
+string Sistema::save_servers(){ //método não concluído por falta de tempo. Infelizmente tive que focar em outras disciplinas nesse final de semestre. Devido a isso, o método de upar os servidores não pôde ser feito. 
   string canalAtual;
   string servidorName;
   ofstream arquivo_servidores("servidores.txt");
-  arquivo_servidores <<"TAMANHO: " << vectorServidores.size()<<endl;
-  cout << "NUMERO DE SERVIDORES:"<< vectorServidores.size();
+  arquivo_servidores << vectorServidores.size()<<endl;
+  cout << vectorServidores.size();
 
   for (int i = 0; vectorServidores.size(); i++){
     if (vectorServidores.size() == i){
@@ -561,7 +520,7 @@ string Sistema::save_servers(){
     }
     cout<<"DEBUG: ENTROU "<<i<<endl;
     arquivo_servidores <<"Id do Usuario Dono:" << vectorServidores[i]->getUsuarioDonoID()<<endl;
-    arquivo_servidores <<"Nome servidor: " << vectorServidores[i]->getNomeServidor()<<endl;
+    arquivo_servidores <<vectorServidores[i]->getNomeServidor()<<endl;
     arquivo_servidores << "Descricao Servidor: " << vectorServidores[i]->getDescricaoServidor()<<endl;
     arquivo_servidores << "Codigo convite " <<vectorServidores[i]->getCodigoConviteServidor()<<endl;
     //falta numero de participantes do servidor
@@ -576,12 +535,10 @@ string Sistema::save_servers(){
         arquivo_servidores<< "tamanho do canal texto: "<< vectorCanaisTexto.size()<<endl;
         arquivo_servidores << "Nome do canal:"<< vectorCanaisTexto[c]->getNomeCanal()<<endl;
          canalAtual= vectorCanaisTexto[c]->getNomeCanal();
-         cout << "CANAL ATUAL EH " <<canalAtual <<endl;
       }
 
 
       for(size_t a = 0; vectorMensagens.size(); a++){
-          cout << "DEBUG2: ENTROU "<< a<< "CANAL ATUAL NUMERO:" << canalAtual<< endl;
           if (vectorMensagens.size() == a){
             break;
           }
@@ -602,9 +559,54 @@ string Sistema::save_servers(){
 string Sistema::save(){
   save_servers();
   save_users();
-  return "deu ceerto hehehe";
+  return "Informacoes de usuarios e servidores salvas com sucesso em ./usuarios.txt e ./servidores.txt.";
 
 }
 
+string Sistema::upload_users(){ //id, nome, email, senha
+  ifstream users("usuarios.txt");
+  string id, email, senha, nome, qntdUsuarios;
+  int quantidadeUsuarios, id_convertido;
+  if (users.is_open()){
+    //cout << "quantidade de usuarios eh " << quantidadeUsuarios<<endl;
+    getline(users,qntdUsuarios);
+    quantidadeUsuarios = stoi(qntdUsuarios);
+    for (int i = 0; i < quantidadeUsuarios; i++){
+      getline(users, id);
+      getline(users, nome);
+      getline(users, email);
+      getline(users, senha);
+      cout << "------------------------------------------------"<<endl;
+      cout << "ID: " << id << " nome:"<< nome <<" email:"<< email <<"  senha:"<< senha<<endl;
+      cout << "------------------------------------------------"<<endl;
+      create_user(email, senha, nome);
+      cout <<"usuario criado com sucesso!"<<endl <<endl;
+    }
+    users.close();
+  }else{
+    return "Erro! Nao foi possivel abrir o arquivo usuarios.txt.";
+  }
+  return "Usuario(s) recuperado(s) com sucesso!";
+}
 
-/* IMPLEMENTAR MÉTODOS PARA OS COMANDOS RESTANTES */
+string Sistema::upload_servers(){//Método não implementado 100% devido a falta de tempo. Infelizmente tive que focar em outras disciplinas nesse final de semestre =/
+  ifstream servers("servidores.txt");
+  string qntdServidores, nomeServidor, idUsuarioDono;
+  int qntdServidoresConvertido;
+  getline(servers, qntdServidores);
+  qntdServidoresConvertido = stoi(qntdServidores);
+
+  for (int i = 0; i < 2; i ++){
+      getline (servers, idUsuarioDono);
+      getline (servers, nomeServidor);
+      create_server(nomeServidor);
+      cout << endl;
+  }
+  return "Servidores carregados com sucesso!";
+}
+
+string Sistema::upload(){
+  upload_users();
+  upload_servers();
+  return "Usuarios e servidores carregados com sucesso!";
+}

@@ -161,12 +161,31 @@ class Sistema {
      * @brief função que listará todas as mensagens do Canal onde o usuário está conectado. Se for um canal de **texto**, mostrará todas as mensagens de texto. Caso o Canal seja de **voz**, mostrará apenas a última mensagem do Canal. E caso exista um canal de mesmo nome para **voz e texto**, imprimirá tanto as mensagens de texto quanto a última mensagem como voz.
     */
     string list_messages();
+    /**
+     * @brief Função que salva todos os usuários criados durante a execução do Concordo. As informações são exportadas para o arquivo "usuarios.txt" 
+    */
 
     string save_users();
-
+    /**
+     * @brief Função que salva todos os servidores criados durante a execução do Concordo. As informações são exportadas para o arquivo "servidores.txt" 
+    */
     string save_servers();
-
+    /**
+     * @brief Função que salva todos os usuários e servidores criados durante a execução do Concordo. As informações são exportadas para o arquivo "usuarios.txt" e "servidores.txt", respectivamente.
+    */
     string save();
+    /**
+     * @brief Função que fará o carregamento dos usuários previamente salvos em outra sessão do Concordo. Ele carregará a partir do arquivo "usuarios.txt" e recuperará todos os usuários criados anteriormente, automaticamente. 
+    */
+    string upload_users();
+    /**
+     * @brief Função que fará o carregamento dos servidores previamente salvos em outra sessão do Concordo. Ele carregará a partir do arquivo "servidores.txt" e recuperará todos os servidores criados anteriormente, automaticamente. 
+    */
+    string upload_servers();
+    /**
+     * @brief Função que fará o carregamento tanto dos usuários quanto dos servidores previamente salvos em outra sessão do Concordo. Ele carregará a partir do arquivo "usuarios.txt" e "servidores.txt" e recuperará todos os usuários e servidores criados anteriormente, automaticamente. 
+    */
+    string upload();
   };
 
   #endif

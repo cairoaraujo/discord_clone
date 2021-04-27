@@ -164,6 +164,18 @@ string Executor::processarLinha(string linha) {
     return sistema -> save();
   }
 
+  else if (nomeComando == "upload-users"){
+    return sistema -> upload_users();
+  }
+
+  else if (nomeComando == "upload-servers"){
+    return sistema -> upload_servers();
+  }
+
+  else if (nomeComando == "upload"){
+    return sistema -> upload();
+  }
+  
   else {
     return "Comando não reconhecido [" + nomeComando + "]";
   }

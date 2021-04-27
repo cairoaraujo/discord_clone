@@ -22,4 +22,6 @@ list-messages
 enter-channel CANAL2
 send-message MSG CANAL2
 list-messages
+save-users
+save-servers
 save
