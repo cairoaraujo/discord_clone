@@ -492,6 +492,10 @@ string Sistema::list_messages() {
   return "Mensagens imprimidas com sucesso!";
 }
 
+/*
+C1 0.5
+Está implementado mas não foi usado no sistema por isso não consegui testar, vou considerar 50%
+*/
 string Sistema::save_users(){
   ofstream arquivo_usuarios("usuarios.txt");
   arquivo_usuarios << vectorUsuarios.size() << endl;
@@ -506,7 +510,10 @@ string Sistema::save_users(){
 }
 
 
-
+/*
+C2 0.2
+ok cairo, vou considerar 20% ainda assim, está meio caminho andado
+*/
 string Sistema::save_servers(){ //método não concluído por falta de tempo. Infelizmente tive que focar em outras disciplinas nesse final de semestre. Devido a isso, o método de upar os servidores não pôde ser feito. 
   string canalAtual;
   string servidorName;
@@ -563,6 +570,10 @@ string Sistema::save(){
 
 }
 
+/*
+C3 0.5
+Não é possível testar uma vez que saveUsers não é usado no sistema, vou considerar 50%
+*/
 string Sistema::upload_users(){ //id, nome, email, senha
   ifstream users("usuarios.txt");
   string id, email, senha, nome, qntdUsuarios;
@@ -589,6 +600,10 @@ string Sistema::upload_users(){ //id, nome, email, senha
   return "Usuario(s) recuperado(s) com sucesso!";
 }
 
+/*
+C4 0.2
+Iden ao save_servers
+*/
 string Sistema::upload_servers(){//Método não implementado 100% devido a falta de tempo. Infelizmente tive que focar em outras disciplinas nesse final de semestre =/
   ifstream servers("servidores.txt");
   string qntdServidores, nomeServidor, idUsuarioDono;
